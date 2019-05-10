@@ -1,9 +1,9 @@
 {
-  "name": "pwaarek05",
+  "name": "pwaarek 201905",
   "short_name": "pwaarek05",
-  "theme_color": "#1976d2",
+  "theme_color": "#FFA500",
   "background_color": "#fafafa",
-  "display": "standalone",
+  "display": "fullscreen",
   "scope": "/",
   "start_url": "/",
   "icons": [

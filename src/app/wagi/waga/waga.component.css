@@ -1,0 +1,23 @@
+  .container-form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .container-form>* {
+    width: 100%;
+  }
+
+  .wynikiStyl {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .mat-form-field {
+    text-align: center;
+  }
+
+  .btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
