@@ -203,12 +203,34 @@ export class WagaService {
     if (godzina >= 6 && godzina <= 14) {
 
       console.log('rano');
-      let przerwaI = new Date(teraz).setHours(16, 30, 0);
-      let przerwaIa = new Date(przerwaI).getTime() - new Date().getTime();
-      let przerwaIb = Math.floor(przerwaIa / 60000);
-      let przerwaIc = Math.floor(przerwaIb / 60);
-      let przerwaId = Math.floor(przerwaIc % 60);
-      return { zmiana: 'rano', przerwaI: przerwaI }
+      if (teraz.getHours() < 9) {
+        let przerwaI = new Date(teraz).setHours(8, 30, 0);
+        let przerwaIa = new Date(przerwaI).getTime() - new Date().getTime();
+        let przerwaIb = Math.floor(przerwaIa / 60000);
+        let przerwaIc = Math.floor(przerwaIb / 60);
+        let przerwaId = Math.floor(przerwaIc % 60);
+
+        let przerwa1 = przerwaIc + ':' + przerwaId;
+        return { przerwaI: przerwa1 }
+      }
+      if (teraz.getHours() > 12) {
+        let przerwaII = new Date(teraz).setHours(11, 30, 0);
+        let przerwaIIa = new Date(przerwaII).getTime() - new Date().getTime();
+        let przerwaIIb = Math.floor(przerwaIIa / 60000);
+        let przerwaIIc = Math.floor(przerwaIIb / 60);
+        let przerwaIId = Math.floor(przerwaIIc % 60);
+
+        let przerwa2 = przerwaIIc + ':' + przerwaIId;
+        return { przerwaII: przerwa2 }
+      }
+      let timeD = new Date(teraz).setHours(14, 0, 0);
+      let timeE = new Date(timeD).getTime() - new Date().getTime();
+      let timeF = Math.floor(timeE / 60000);
+      let timeG = Math.floor(timeF / 60);
+      let timeGg = Math.floor(timeF % 60);
+      let doKoncaDnia = timeG + ':' + timeGg;
+      console.log(' ile do konca dniowki: ' + doKoncaDnia);
+      return { zmiana: 'rano', doKonca: doKoncaDnia }
     }
 
     if (godzina >= 14 && godzina <= 22) {
@@ -271,7 +293,17 @@ export class WagaService {
         let przerwaId = Math.floor(przerwaIc % 60);
         return { zmiana: 'nocka', przerwaI: przerwaI, doKonca: doKoncaDnia }
       }
-  
+      if (godzina < 4) {
+
+        console.log('Iprzerwa');
+        let przerwaII = new Date(teraz).setHours(1, 30, 0);
+        let przerwaIIa = new Date(przerwaII).getTime() - new Date().getTime();
+        let przerwaIIb = Math.floor(przerwaIIa / 60000);
+        let przerwaIIc = Math.floor(przerwaIIb / 60);
+        let przerwaIId = Math.floor(przerwaIIc % 60);
+        return { zmiana: 'nocka', przerwaII: przerwaII, doKonca: doKoncaDnia }
+      }
+
       return { zmiana: 'nocka', doKonca: doKoncaDnia }
     }
     return 'niewiem która zmiana';
