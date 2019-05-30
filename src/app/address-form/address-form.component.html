@@ -1,3 +1,26 @@
+<form  [formGroup]="pakowanieForm" novalidate (ngSubmit)="savePakowanie()">
+  <mat-card-content> 
+    <mat-form-field  >
+      <input matInput placeholder="wll" formControlName="ptonaz">
+    </mat-form-field> 
+    <mat-form-field  >
+      <input matInput placeholder="l1" formControlName="pdlugosc">
+    </mat-form-field> 
+  </mat-card-content>
+</form> 
+
+<mat-card *ngIf="pakowanieForm.value.ptonaz"  > 
+  <mat-card-header>
+    <mat-card-title>Pakowanie</mat-card-title>
+    <mat-card-subtitle>spinanie banderowanie</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+  Wll: {{pakowanieForm.value.ptonaz}} wddd
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>Ok</button>
+  </mat-card-actions>
+</mat-card>
 <form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
   <mat-card class="shipping-card">
     <mat-card-header>
