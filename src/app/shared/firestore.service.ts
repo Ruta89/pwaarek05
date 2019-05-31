@@ -74,7 +74,7 @@ export class FirestoreService {
       const idData = { id: data.id };
       this.afs.doc(`zleceniaTest/${data.id}`).update(idData);
 
-      let lacznyCzass = this.wService.lacznyCzas(razem.czas * razem.szt);
+      const lacznyCzass = this.wService.lacznyCzas(razem.czas * razem.szt);
       this.czasCollection.add({
         date: new Date(),
         czas: lacznyCzass,

@@ -18,14 +18,14 @@ export class DashboardComponent {
       if (matches) {
         return [
           { title: 'Stan', description: 'Stan 450 minut ', cols: 1, rows: 1 },
-          { title: 'Dodaj', description: "asddasdasdsadsadsa", cols: 1, rows: 1 }
+          { title: 'Dodaj', description: 'asddasdasdsadsadsa', cols: 1, rows: 1 }
         ];
       }
 
       return [
         { title: 'Stan', description: 'Stan 450 minut ', cols: 2, rows: 1 },
         { title: 'Dodaj', description: 'asddasdasdsadsadsa', cols: 1, rows: 1 }
-       ];
+      ];
     })
   );
 
@@ -45,7 +45,7 @@ export class DashboardComponent {
   //       console.log(err);
   //     }
   //   );
-  // } 
+  // }
   addForm = this.fb.group({
     wll: null,
     dlugosc: [null, Validators.required],

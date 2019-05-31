@@ -9,7 +9,7 @@ import { interval } from 'rxjs';
 })
 export class WagaService {
   waga;
-  constructor() {}
+  constructor() { }
 
   form: FormGroup = new FormGroup({
     id: new FormControl(null),
@@ -191,18 +191,18 @@ export class WagaService {
     if (godzina >= 6 && godzina <= 14) {
       console.log('rano');
       if (teraz.getHours() < 9) {
-        let przerwaI = new Date(teraz).setHours(8, 30, 0);
-        let przerwaIa = new Date(przerwaI).getTime() - new Date().getTime();
-        let przerwaIb = Math.floor(przerwaIa / 60000);
-        let przerwaIc = Math.floor(przerwaIb / 60);
-        let przerwaId = Math.floor(przerwaIc % 60);
+        const przerwaI = new Date(teraz).setHours(8, 30, 0);
+        const przerwaIa = new Date(przerwaI).getTime() - new Date().getTime();
+        const przerwaIb = Math.floor(przerwaIa / 60000);
+        const przerwaIc = Math.floor(przerwaIb / 60);
+        const przerwaId = Math.floor(przerwaIc % 60);
 
-        let przerwa1 = przerwaIc + ':' + przerwaId;
+        const przerwa1 = przerwaIc + ':' + przerwaId;
         return { przerwaI: przerwa1 };
       }
       if (teraz.getHours() > 9) {
         // ustalam kiedy przerwa
-        let przerwaII = new Date(teraz).setHours(11, 30, 0);
+        const przerwaII = new Date(teraz).setHours(11, 30, 0);
         console.log('przerwaII', new Date(przerwaII).getHours() + ':', new Date(przerwaII).getMinutes());
 
         // krotka wersja
@@ -211,32 +211,32 @@ export class WagaService {
 
         // dluzsza wersja
         // ile milisekund do przerwy
-        let przerwaIIa = new Date(przerwaII).getTime() - new Date(teraz).getTime();
+        const przerwaIIa = new Date(przerwaII).getTime() - new Date(teraz).getTime();
         console.log('przerwaIIa', przerwaIIa);
 
         // za ile minut
-        let przerwaIIb = Math.floor(przerwaIIa / 60000);
+        const przerwaIIb = Math.floor(przerwaIIa / 60000);
         console.log('przerwaIIb', przerwaIIb);
 
         // za ile godzin
-        let przerwaIIc = Math.floor(przerwaIIb / 60);
+        const przerwaIIc = Math.floor(przerwaIIb / 60);
         console.log('c', przerwaIIc);
 
         // ile minut bez godziny (reszta)
-        let przerwaIId = Math.floor(przerwaIIb % 60);
+        const przerwaIId = Math.floor(przerwaIIb % 60);
         console.log('przerwaIId %:', przerwaIId);
 
         // formatuje
-        let przerwa2 = przerwaIIc + ':' + przerwaIId;
+        const przerwa2 = przerwaIIc + ':' + przerwaIId;
         console.log('przerwa2', przerwa2);
         return { przerwaII: przerwa2 };
       }
-      let timeD = new Date(teraz).setHours(14, 0, 0);
-      let timeE = new Date(timeD).getTime() - new Date().getTime();
-      let timeF = Math.floor(timeE / 60000);
-      let timeG = Math.floor(timeF / 60);
-      let timeGg = Math.floor(timeF % 60);
-      let doKoncaDnia = timeG + ':' + timeGg;
+      const timeD = new Date(teraz).setHours(14, 0, 0);
+      const timeE = new Date(timeD).getTime() - new Date().getTime();
+      const timeF = Math.floor(timeE / 60000);
+      const timeG = Math.floor(timeF / 60);
+      const timeGg = Math.floor(timeF % 60);
+      const doKoncaDnia = timeG + ':' + timeGg;
       console.log(' ile do konca dniowki: ' + doKoncaDnia);
       return { zmiana: 'rano', doKonca: doKoncaDnia };
     }
@@ -245,37 +245,37 @@ export class WagaService {
       console.log('popołudnie');
 
       if (teraz.getHours() < 17) {
-        let przerwaI = new Date(teraz).setHours(16, 30, 0);
-        let przerwaIa = new Date(przerwaI).getTime() - new Date().getTime();
-        let przerwaIb = Math.floor(przerwaIa / 60000);
-        let przerwaIc = Math.floor(przerwaIb / 60);
-        let przerwaId = Math.floor(przerwaIc % 60);
+        const przerwaI = new Date(teraz).setHours(16, 30, 0);
+        const przerwaIa = new Date(przerwaI).getTime() - new Date().getTime();
+        const przerwaIb = Math.floor(przerwaIa / 60000);
+        const przerwaIc = Math.floor(przerwaIb / 60);
+        const przerwaId = Math.floor(przerwaIc % 60);
         console.log('I przerwa za: ' + przerwaIc + ':' + przerwaId);
         // alert('I przerwa za: ' + przerwaIc + ':' + przerwaId);
 
-        let przerwa1 = przerwaIc + ':' + przerwaId;
+        const przerwa1 = przerwaIc + ':' + przerwaId;
         return { przerwaI: przerwa1 };
       }
       if (teraz.getHours() < 20) {
-        let przerwaII = new Date(teraz).setHours(19, 30, 0);
-        let timeEee = new Date(przerwaII).getTime() - new Date().getTime();
-        let timeFff = Math.floor(timeEee / 60000);
-        let timeGgg = Math.floor(timeFff / 60);
-        let timeGggg = Math.floor(timeFff % 60);
+        const przerwaII = new Date(teraz).setHours(19, 30, 0);
+        const timeEee = new Date(przerwaII).getTime() - new Date().getTime();
+        const timeFff = Math.floor(timeEee / 60000);
+        const timeGgg = Math.floor(timeFff / 60);
+        const timeGggg = Math.floor(timeFff % 60);
         if (timeGgg >= 1) {
           console.log('II przerwa za: ' + timeGgg + ':' + timeGggg);
           // alert('II przerwa za: ' + timeGgg + ':' + timeGggg)
 
-          let przerwa2 = timeGgg + ':' + timeGggg;
+          const przerwa2 = timeGgg + ':' + timeGggg;
           return { przerwaII: przerwa2 };
         }
       }
-      let timeD = new Date(teraz).setHours(22, 0, 0);
-      let timeE = new Date(timeD).getTime() - new Date().getTime();
-      let timeF = Math.floor(timeE / 60000);
-      let timeG = Math.floor(timeF / 60);
-      let timeGg = Math.floor(timeF % 60);
-      let doKoncaDnia = timeG + ':' + timeGg;
+      const timeD = new Date(teraz).setHours(22, 0, 0);
+      const timeE = new Date(timeD).getTime() - new Date().getTime();
+      const timeF = Math.floor(timeE / 60000);
+      const timeG = Math.floor(timeF / 60);
+      const timeGg = Math.floor(timeF % 60);
+      const doKoncaDnia = timeG + ':' + timeGg;
       console.log(' ile do konca dniowki: ' + doKoncaDnia);
       // alert(' ile do konca dniowki: ' + doKoncaDnia)
 
@@ -284,68 +284,68 @@ export class WagaService {
 
     if (godzina > 22) {
       console.log('noc nocka');
-      let timeD = new Date(teraz).setHours(30, 0, 0);
-      let timeE = new Date(timeD).getTime() - new Date().getTime();
-      let timeF = Math.floor(timeE / 60000);
-      let timeG = Math.floor(timeF / 60);
-      let timeGg = Math.floor(timeF % 60);
-      let doKoncaDnia = timeG + ':' + timeGg;
+      const timeD = new Date(teraz).setHours(30, 0, 0);
+      const timeE = new Date(timeD).getTime() - new Date().getTime();
+      const timeF = Math.floor(timeE / 60000);
+      const timeG = Math.floor(timeF / 60);
+      const timeGg = Math.floor(timeF % 60);
+      const doKoncaDnia = timeG + ':' + timeGg;
       console.log(' ile do konca dniowki: ' + doKoncaDnia);
       // alert(' ile do konca dniowki: ' + doKoncaDnia)
       console.log('doKonca:  ', doKoncaDnia);
 
-      let przerwaI = new Date(teraz).setHours(24, 30, 0);
-      let przerwaIa = new Date(przerwaI).getTime() - new Date().getTime();
-      let przerwaIb = Math.floor(przerwaIa / 60000);
-      let przerwaIc = Math.floor(przerwaIb / 60);
-      let przerwaId = Math.floor(przerwaIb % 60);
+      const przerwaI = new Date(teraz).setHours(24, 30, 0);
+      const przerwaIa = new Date(przerwaI).getTime() - new Date().getTime();
+      const przerwaIb = Math.floor(przerwaIa / 60000);
+      const przerwaIc = Math.floor(przerwaIb / 60);
+      const przerwaId = Math.floor(przerwaIb % 60);
       // formatuje
-      let przerwa1 = przerwaIc + ':' + przerwaId;
+      const przerwa1 = przerwaIc + ':' + przerwaId;
       console.log('przerwa1', przerwa1);
       return { zmiana: 'nocka', doKonca: doKoncaDnia, przerwaI: przerwa1 };
     } else {
       console.log('noc nocka');
-      let timeD = new Date(teraz).setHours(6, 0, 0);
-      let timeE = new Date(timeD).getTime() - new Date().getTime();
-      let timeF = Math.floor(timeE / 60000);
-      let timeG = Math.floor(timeF / 60);
-      let timeGg = Math.floor(timeF % 60);
-      let doKoncaDnia = timeG + ':' + timeGg;
+      const timeD = new Date(teraz).setHours(6, 0, 0);
+      const timeE = new Date(timeD).getTime() - new Date().getTime();
+      const timeF = Math.floor(timeE / 60000);
+      const timeG = Math.floor(timeF / 60);
+      const timeGg = Math.floor(timeF % 60);
+      const doKoncaDnia = timeG + ':' + timeGg;
       console.log(' ile do konca dniowki: ' + doKoncaDnia);
       // alert(' ile do konca dniowki: ' + doKoncaDnia)
       console.log('doKonca:  ', doKoncaDnia);
 
-      let przerwaI = new Date(teraz).setHours(1, 30, 0);
-      let przerwaIa = new Date(przerwaI).getTime() - new Date().getTime();
-      let przerwaIb = Math.floor(przerwaIa / 60000);
-      let przerwaIc = Math.floor(przerwaIb / 60);
-      let przerwaId = Math.floor(przerwaIc % 60);
+      const przerwaI = new Date(teraz).setHours(1, 30, 0);
+      const przerwaIa = new Date(przerwaI).getTime() - new Date().getTime();
+      const przerwaIb = Math.floor(przerwaIa / 60000);
+      const przerwaIc = Math.floor(przerwaIb / 60);
+      const przerwaId = Math.floor(przerwaIc % 60);
       // formatuje
-      let przerwa1 = przerwaIc + ':' + przerwaId;
+      const przerwa1 = przerwaIc + ':' + przerwaId;
       console.log('przerwa1', przerwa1);
       return { zmiana: 'nocka', doKonca: doKoncaDnia, przerwaI: przerwa1 };
 
       if (godzina <= 4 && godzina >= 2) {
         console.log('IIprzerwa');
-        let przerwaII = new Date(teraz).setHours(3, 30, 0);
-        let przerwaIIa = new Date(przerwaII).getTime() - new Date().getTime();
-        let przerwaIIb = Math.floor(przerwaIIa / 60000);
-        let przerwaIIc = Math.floor(przerwaIIb / 60);
-        let przerwaIId = Math.floor(przerwaIIc % 60);
+        const przerwaII = new Date(teraz).setHours(3, 30, 0);
+        const przerwaIIa = new Date(przerwaII).getTime() - new Date().getTime();
+        const przerwaIIb = Math.floor(przerwaIIa / 60000);
+        const przerwaIIc = Math.floor(przerwaIIb / 60);
+        const przerwaIId = Math.floor(przerwaIIc % 60);
 
         // formatuje
-        let przerwa2 = przerwaIIc + ':' + przerwaIId;
+        const przerwa2 = przerwaIIc + ':' + przerwaIId;
         console.log('przerwa2', przerwa2);
         return { przerwaII: przerwa2 };
       }
       if (godzina <= 6) {
-        let timeD = new Date(teraz).setHours(6, 0, 0);
-        let timeE = new Date(timeD).getTime() - new Date().getTime();
-        let timeF = Math.floor(timeE / 60000);
-        let timeG = Math.floor(timeF / 60);
-        let timeGg = Math.floor(timeF % 60);
-        let doKoncaDnia = timeG + ':' + timeGg;
-        console.log(' ile do konca dniowki  a : ' + doKoncaDnia);
+        const timeDd = new Date(teraz).setHours(6, 0, 0);
+        const timeEe = new Date(timeDd).getTime() - new Date().getTime();
+        const timeFf = Math.floor(timeEe / 60000);
+        const timeGga = Math.floor(timeFf / 60);
+        const timeGggb = Math.floor(timeF % 60);
+        const doKoncaDniaa = timeGggb + ':' + timeGga;
+        console.log(' ile do konca dniowki  a : ' + doKoncaDniaa);
         // alert(' ile do konca dniowki: ' + doKoncaDnia)
         console.log('nocka');
 
@@ -356,9 +356,9 @@ export class WagaService {
   }
 
   czasSztuki(czas, szt) {
-    let czasWms = czas * 60000;
+    const czasWms = czas * 60000;
     let i = 0;
-    const time = setInterval(function() {
+    const time = setInterval(function () {
       i++;
       console.log('teoretycznie powinnienes juz miec zrobione ' + i);
     }, czasWms);
@@ -371,7 +371,7 @@ export class WagaService {
   }
   lacznyCzas(czas) {
     const norma = 450;
-    let wynik = norma - czas;
+    const wynik = norma - czas;
     console.log('łączny czas: ' + wynik);
     return wynik;
   }
