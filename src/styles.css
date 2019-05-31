@@ -3,13 +3,15 @@
 /* html, body { height: 100%; } */
 /* body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
 
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
-body,
-html {
+html,
+body {
   height: 100%;
-  width: 100%;
+}
+body {
   margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
 
 #container {
@@ -39,7 +41,7 @@ form.normal-form {
   padding: 5%;
 }
 
-.controles-container>* {
+.controles-container > * {
   width: 100%;
 }
 
