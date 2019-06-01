@@ -8,13 +8,12 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 })
 export class DragDropComponent {
   todo = [
-    '5t, 2m,  777888/00/1 x3357 10tsz',
-    '8t, 4m,  777888/00/1 x3357 20tsz',
+    '5t, 2m,  777888/00/1 x3357 10tsz', 
     '2t, 3m,  777888/00/1 x3357 80tsz',
     '20t, 8m, 777888/00/1 x3357  2tsz'
   ];
 
-  done = ['2t, 3m,  777888/00/1 x3357 40tsz', '5t, 2m,  777888/00/1 x3357 10tsz', '8t, 4m,  777888/00/1 x3357 20tsz'];
+  done = ['2t, 3m,  777888/00/1 x3357 40tsz', '8t, 4m,  777888/00/1 x3357 20tsz'];
 
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
