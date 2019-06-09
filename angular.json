@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "pwaarek": {
+    "pwaarek05": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/pwaarek",
+            "outputPath": "dist/pwaarek05",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -60,18 +60,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "pwaarek:build"
+            "browserTarget": "pwaarek05:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "pwaarek:build:production"
+              "browserTarget": "pwaarek05:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "pwaarek:build"
+            "browserTarget": "pwaarek05:build"
           }
         },
         "test": {
@@ -111,7 +111,7 @@
         }
       }
     },
-    "pwaarek-e2e": {
+    "pwaarek05-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -120,11 +120,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "pwaarek:serve"
+            "devServerTarget": "pwaarek05:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "pwaarek:serve:production"
+              "devServerTarget": "pwaarek05:serve:production"
             }
           }
         },
@@ -140,7 +140,7 @@
       }
     }
   },
-  "defaultProject": "pwaarek",
+  "defaultProject": "pwaarek05",
   "cli": {
     "packageManager": "yarn"
   }

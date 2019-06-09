@@ -1,11 +1,11 @@
 {
   "projects": {
-    "default": "pwaarek"
+    "default": "pwaarek05"
   },
   "targets": {
     "appdemo-76586": {
       "hosting": {
-        "pwaarek": [
+        "pwaarek05": [
           "appdemo-76586"
         ]
       }

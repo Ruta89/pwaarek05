@@ -1,7 +1,7 @@
 {
   "hosting": [
     {
-      "public": "dist/pwaarek",
+      "public": "dist/pwaarek05",
       "ignore": [
         "firebase.json",
         "**/.*",
@@ -9,8 +9,8 @@
       ]
     },
     {
-      "target": "pwaarek",
-      "public": "dist/pwaarek",
+      "target": "pwaarek05",
+      "public": "dist/pwaarek05",
       "ignore": [
         "firebase.json",
         "**/.*",
