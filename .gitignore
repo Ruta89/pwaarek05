@@ -4,8 +4,6 @@
 /dist
 /tmp
 /out-tsc
-# Only exists if Bazel was run
-/bazel-out
 
 # dependencies
 /node_modules
@@ -44,3 +42,6 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+/e2e
+/dist
+yarn.lock
