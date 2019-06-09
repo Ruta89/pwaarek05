@@ -1,14 +1,5 @@
 {
   "projects": {
-    "default": "pwaarek05"
-  },
-  "targets": {
-    "appdemo-76586": {
-      "hosting": {
-        "pwaarek05": [
-          "appdemo-76586"
-        ]
-      }
-    }
+    "default": "pwaarek"
   }
 }
