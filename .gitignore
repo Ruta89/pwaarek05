@@ -45,3 +45,6 @@ Thumbs.db
 /e2e
 /dist
 yarn.lock
+*.cache
+src/environments/environment.prod.ts
+src/environments/environment.ts
