@@ -42,7 +42,8 @@ export class FirestoreService {
   }
 
   getItems() {
-    return this.afs.collection('zleceniaTest').snapshotChanges();
+    return this.afs.collection('zleceniaTest', ref =>
+      ref.orderBy('created', 'desc')).snapshotChanges();
   }
 
   addItem(item: Item) {
