@@ -9,6 +9,7 @@ import { TableComponent } from './table/table.component';
 import { WagiComponent } from './wagi/wagi.component';
 import { WagaListaComponent } from './wagi/waga-lista/waga-lista.component';
 import { WagaComponent } from './wagi/waga/waga.component';
+import { NrArtkComponent } from './nr-artk/nr-artk.component';
 
 const routes: Routes = [
   { path: '', component: WagiComponent },
@@ -19,11 +20,12 @@ const routes: Routes = [
   { path: 'AddressFormComponent', component: AddressFormComponent },
   { path: 'wagi', component: WagiComponent },
   { path: 'waga', component: WagaComponent },
-  { path: 'WagaListaComponent', component: WagaListaComponent }
+  { path: 'WagaListaComponent', component: WagaListaComponent },
+  { path: 'nr-artk', component: NrArtkComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

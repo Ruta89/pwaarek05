@@ -28,6 +28,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatTreeModule } from '@angular/material/tree';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NavComponent } from './nav/nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
@@ -46,6 +48,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { FirestoreService } from './shared/firestore.service';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { NrArtkComponent } from './nr-artk/nr-artk.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +61,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     DragDropComponent,
     WagiComponent,
     WagaComponent,
-    WagaListaComponent
+    WagaListaComponent,
+    NrArtkComponent
   ],
   imports: [
     BrowserModule,
@@ -92,11 +96,12 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatFormFieldModule,
     MatInputModule,
     MatRadioModule,
-    MatSelectModule,
     MatCheckboxModule,
     MatDatepickerModule,
     MatNativeDateModule,
     MatButtonModule,
+    MatSlideToggleModule,
+    MatAutocompleteModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
