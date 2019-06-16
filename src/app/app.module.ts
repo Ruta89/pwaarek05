@@ -49,6 +49,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { FirestoreService } from './shared/firestore.service';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NrArtkComponent } from './nr-artk/nr-artk.component';
+import { CzasComponent } from './czas/czas.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { NrArtkComponent } from './nr-artk/nr-artk.component';
     WagiComponent,
     WagaComponent,
     WagaListaComponent,
-    NrArtkComponent
+    NrArtkComponent,
+    CzasComponent
   ],
   imports: [
     BrowserModule,
