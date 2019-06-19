@@ -9,11 +9,13 @@ import { CzasService } from '../czas.service';
 export class CzasComponent implements OnInit {
 
 
-  czasy: any;
-  tonazCzas: string;
+  czasy: any; 
+  razem: any;
+  tonazCzas: number;
   dlugoscCzas: number;
-  minutyCzas: string;
+  minutyCzas: number;
   sztukCzas: number;
+  sumaCzas: number;
 
   constructor(private czasService: CzasService) { }
 
@@ -28,12 +30,27 @@ export class CzasComponent implements OnInit {
           Dlugosc: e.payload.doc.data()['Dlugosc'],
           Minuty: e.payload.doc.data()['Minuty'],
           Sztuk: e.payload.doc.data()['Sztuk'],
-        };
-      });
-      console.log(this.czasy);
+          Razem: e.payload.doc.data()['Razem'],
+        }
+      })
+      console.log(this.czasy)
+    })
+    
+    this.czasService.razemCzas().subscribe(data => {
 
-    });
-  }
+      this.razem = data.map(ea => {
+        return ea.payload.doc.data()['Razem']
+      })
+      console.log('abc');
+      console.log( this.razem );
+      this.sumaCzas = this.razem.reduce( (a, b) => {
+        return a + b;
+    }, 0);
+    console.log( this.sumaCzas )
+    })
+    }
+
+
 
   CreateCzas() {
     let record = {};
@@ -41,10 +58,12 @@ export class CzasComponent implements OnInit {
     record['Dlugosc'] = this.dlugoscCzas;
     record['Minuty'] = this.minutyCzas;
     record['Sztuk'] = this.sztukCzas;
+    record['Razem'] = this.sztukCzas * this.minutyCzas;
+    record['created'] = new Date();
     this.czasService.addCzas(record).then(resp => {
-      this.tonazCzas = '';
+      this.tonazCzas = undefined;
       this.dlugoscCzas = undefined;
-      this.minutyCzas = '';
+      this.minutyCzas = undefined;
       this.sztukCzas = undefined;
       console.log(resp);
     })
@@ -66,12 +85,12 @@ export class CzasComponent implements OnInit {
   }
 
   UpdateRecord(recordRow) {
-    let recordTemp = {};
-    recordTemp['Tonaz'] = recordRow.EditTonaz;
-    recordTemp['Dlugosc'] = recordRow.EditDlugosc;
-    recordTemp['Minuty'] = recordRow.EditMinuty;
-    recordTemp['Sztuk'] = recordRow.EditSztuk;
-    let record = recordTemp;
+    let record = {};
+    record['Tonaz'] = recordRow.EditTonaz;
+    record['Dlugosc'] = recordRow.EditDlugosc;
+    record['Minuty'] = recordRow.EditMinuty;
+    record['Sztuk'] = recordRow.EditSztuk;
+    record['Razem'] = recordRow.EditSztuk * recordRow.EditMinuty;
     this.czasService.updateCzas(recordRow.id, record);
     recordRow.isEdit = false;
   }
