@@ -1,14 +1,5 @@
 {
   "projects": {
     "default": "pwaarek"
-  },
-  "targets": {
-    "pwaarek": {
-      "hosting": {
-        "pwaarek": [
-          "pwaarek"
-        ]
-      }
-    }
-  }
+  } 
 }
