@@ -82,7 +82,11 @@
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <textarea matInput placeholder="Notatka" formControlName="notatka"></textarea>
+            <textarea
+              matInput
+              placeholder="Notatka"
+              formControlName="notatka"
+            ></textarea>
           </mat-form-field>
         </div>
       </div>
@@ -92,3 +96,10 @@
     </mat-card-actions>
   </mat-card>
 </form>
+<mat-list>
+  <mat-list-item *ngFor="let naddatek of listaNaddatkow"
+    >Maszyna: {{ naddatek.maszyna }}, Wll: {{ naddatek.tonaz }}, L1:
+    {{ naddatek.dlugosc }}, rękaw/gurt: {{ naddatek.rekaw }}, naddatek:
+    {{ naddatek.naddatek }}, notatka: {{ naddatek.notatka }}</mat-list-item
+  >
+</mat-list>

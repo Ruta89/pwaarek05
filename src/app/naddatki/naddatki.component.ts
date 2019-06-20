@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { NaddatkiService, Naddatek } from '../naddatki.service';
 
 @Component({
   selector: 'app-naddatki',
@@ -7,6 +8,7 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./naddatki.component.css']
 })
 export class NaddatkiComponent implements OnInit {
+  listaNaddatkow: any;
   naddatkiForm = this.fb.group({
     tonaz: null,
     dlugosc: [null, Validators.required],
@@ -25,14 +27,25 @@ export class NaddatkiComponent implements OnInit {
     { name: 'Słupki', abbreviation: 'slupki' }
   ];
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private naddatkiService: NaddatkiService) { }
   ngOnInit() {
-
+    console.log('naddatki');
+    this.naddatkiService.pokazNaddatki().subscribe(data => {
+      this.listaNaddatkow = data.map(e => {
+        return {
+          id: e.payload.doc.id,
+          ...e.payload.doc.data()
+        }
+      });
+      console.log(this.listaNaddatkow);
+    });
+    console.log(this.listaNaddatkow);
   }
 
   onSubmit() {
     alert('Dzieki!');
     console.log(this.naddatkiForm.value);
+    this.naddatkiService.dodajNaddatek(this.naddatkiForm.value);
   }
 
 }
