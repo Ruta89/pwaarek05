@@ -303,7 +303,7 @@ export class WagaService {
       const przerwa1 = przerwaIc + ':' + przerwaId;
       console.log('przerwa1', przerwa1);
       return { zmiana: 'nocka', doKonca: doKoncaDnia, przerwaI: przerwa1 };
-    } else {
+    } else if (godzina < 6) {
       console.log('noc nocka');
       const timeD = new Date(teraz).setHours(6, 0, 0);
       const timeE = new Date(timeD).getTime() - new Date().getTime();
@@ -323,8 +323,6 @@ export class WagaService {
       // formatuje
       const przerwa1 = przerwaIc + ':' + przerwaId;
       console.log('przerwa1', przerwa1);
-      return { zmiana: 'nocka', doKonca: doKoncaDnia, przerwaI: przerwa1 };
-
       if (godzina <= 4 && godzina >= 2) {
         console.log('IIprzerwa');
         const przerwaII = new Date(teraz).setHours(3, 30, 0);
@@ -351,6 +349,9 @@ export class WagaService {
 
         return { zmiana: 'nocka', doKonca: doKoncaDnia };
       }
+      return { zmiana: 'nocka', doKonca: doKoncaDnia, przerwaI: przerwa1 };
+
+
     }
     return { zmiana: 'niewiem która zmiana' };
   }

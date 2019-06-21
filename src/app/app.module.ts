@@ -44,13 +44,14 @@ import { WagaListaComponent } from './wagi/waga-lista/waga-lista.component';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireStorageModule, StorageBucket } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { FirestoreService } from './shared/firestore.service';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NrArtkComponent } from './nr-artk/nr-artk.component';
 import { CzasComponent } from './czas/czas.component';
 import { NaddatkiComponent } from './naddatki/naddatki.component';
+import { UploadComponent } from './upload/upload.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import { NaddatkiComponent } from './naddatki/naddatki.component';
     WagaListaComponent,
     NrArtkComponent,
     CzasComponent,
-    NaddatkiComponent
+    NaddatkiComponent,
+    UploadComponent
   ],
   imports: [
     BrowserModule,
@@ -112,7 +114,7 @@ import { NaddatkiComponent } from './naddatki/naddatki.component';
     AngularFireStorageModule,
     FlexLayoutModule
   ],
-  providers: [],
+  providers: [  { provide: StorageBucket, useValue: 'pwaarek.appspot.com' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

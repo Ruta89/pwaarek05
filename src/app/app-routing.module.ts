@@ -12,6 +12,7 @@ import { WagaComponent } from './wagi/waga/waga.component';
 import { NrArtkComponent } from './nr-artk/nr-artk.component';
 import { CzasComponent } from './czas/czas.component';
 import { NaddatkiComponent } from './naddatki/naddatki.component';
+import { UploadComponent } from './upload/upload.component';
 
 const routes: Routes = [
   { path: '', component: WagiComponent },
@@ -25,7 +26,8 @@ const routes: Routes = [
   { path: 'WagaListaComponent', component: WagaListaComponent },
   { path: 'nr-artk', component: NrArtkComponent },
   { path: 'czas', component: CzasComponent },
-  { path: 'naddatki', component: NaddatkiComponent }
+  { path: 'naddatki', component: NaddatkiComponent },
+  { path: 'wgraj', component: UploadComponent }
 ];
 
 @NgModule({

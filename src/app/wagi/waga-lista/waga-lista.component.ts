@@ -36,11 +36,18 @@ export class WagaListaComponent implements OnInit {
   items$: Observable<Item[]>;
   list: Item[];
   zmiana;
+  razem;
+  sumaOblicz;
+  rwag;
+  sumaWag;
+  math: Math;
   constructor(
     private afs: AngularFirestore,
     private firestoreService: FirestoreService,
     private serviceWaga: WagaService
-  ) { }
+  ) {
+    this.math = Math;
+  }
 
   ngOnInit() {
     this.firestoreService.getItems().subscribe(data => {
@@ -55,10 +62,13 @@ export class WagaListaComponent implements OnInit {
     this.zmiana = this.serviceWaga.jakaZmiana();
     // alert(this.zmiana.zmiana + ', - pozostalo ' + this.zmiana.doKonca + ' do konca');
     // this.serviceWaga.WyrobionyCzasFn();
+
+    this.razemSuma();
+    this.razemSumaWagi();
   }
 
   update(item: Item) {
-    console.log('update: ', item);
+    // console.log('update: ', item);
     // this.firestoreService.updateItem(item);
     this.serviceWaga.form.setValue({
       id: item.id,
@@ -71,10 +81,37 @@ export class WagaListaComponent implements OnInit {
     });
   }
   addItem(item: Item) {
-    console.log('addItem: ', item);
+    // console.log('addItem: ', item);
     this.firestoreService.addItem(item);
   }
   delete(item: Item) {
     this.firestoreService.deleteItem(item);
+  }
+
+  razemSuma() {
+    this.firestoreService.sumaCzasu().subscribe(data => {
+      this.razem = data.map(ea => {
+        return ea.payload.doc.data()['czas'] * ea.payload.doc.data()['szt'];
+      });
+      // console.log('razem: ');
+      // console.log(this.razem);
+      this.sumaOblicz = this.razem.reduce((a, b) => {
+        return a + b;
+      }, 0);
+      // console.log(this.sumaOblicz);
+    });
+  }
+  razemSumaWagi() {
+    this.firestoreService.sumaWagi().subscribe(data => {
+      this.rwag = data.map(ea => {
+        return ea.payload.doc.data()['waga'] * ea.payload.doc.data()['szt'];
+      });
+      // console.log('waga razem: ');
+      // console.log(this.rwag);
+      this.sumaWag = this.rwag.reduce((a, b) => {
+        return a + b;
+      }, 0);
+      // console.log(this.sumaWag);
+    });
   }
 }
