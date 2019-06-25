@@ -13,7 +13,14 @@ export class NaddatkiComponent implements OnInit {
     tonaz: null,
     dlugosc: [null, Validators.required],
     maszyna: [null, Validators.required],
-    naddatek: [null, Validators.compose([Validators.required, Validators.minLength(5), Validators.maxLength(5)])],
+    naddatek: [
+      null,
+      Validators.compose([
+        Validators.required,
+        Validators.minLength(5),
+        Validators.maxLength(5)
+      ])
+    ],
     rekaw: ['rekaw', Validators.required],
     notatka: null
   });
@@ -27,7 +34,10 @@ export class NaddatkiComponent implements OnInit {
     { name: 'Słupki', abbreviation: 'slupki' }
   ];
 
-  constructor(private fb: FormBuilder, private naddatkiService: NaddatkiService) { }
+  constructor(
+    private fb: FormBuilder,
+    private naddatkiService: NaddatkiService
+  ) {}
   ngOnInit() {
     console.log('naddatki');
     this.naddatkiService.pokazNaddatki().subscribe(data => {
@@ -35,7 +45,7 @@ export class NaddatkiComponent implements OnInit {
         return {
           id: e.payload.doc.id,
           ...e.payload.doc.data()
-        }
+        };
       });
       console.log(this.listaNaddatkow);
     });
@@ -47,5 +57,4 @@ export class NaddatkiComponent implements OnInit {
     console.log(this.naddatkiForm.value);
     this.naddatkiService.dodajNaddatek(this.naddatkiForm.value);
   }
-
 }
