@@ -146,6 +146,8 @@ export class WagaService {
     }
     if (wll === 50) {
       licznikMetr = 64;
+    }    if (wll === 80) {
+      licznikMetr = 100;
     }
     if (wll === 100) {
       licznikMetr = 126;
