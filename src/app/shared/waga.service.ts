@@ -9,7 +9,7 @@ import { interval } from 'rxjs';
 })
 export class WagaService {
   waga;
-  constructor() { }
+  constructor() {}
 
   form: FormGroup = new FormGroup({
     id: new FormControl(null),
@@ -88,6 +88,9 @@ export class WagaService {
       case 60:
         return 12;
         break;
+      case 80:
+        return 12;
+        break;
       case 200:
         return 12;
         break;
@@ -146,7 +149,8 @@ export class WagaService {
     }
     if (wll === 50) {
       licznikMetr = 64;
-    }    if (wll === 80) {
+    }
+    if (wll === 80) {
       licznikMetr = 100;
     }
     if (wll === 100) {
@@ -168,12 +172,22 @@ export class WagaService {
     const zuzyto = (licznik + (dl * 2 + 5)) * szpule;
     if (wll < 4) {
       console.log(
-        'nawinieto [66.000] ' + nawinieto + ' metrów, zuzyto: ' + zuzyto + ' metrów o wadze: ' + zuzyto * 0.0066
+        'nawinieto [66.000] ' +
+          nawinieto +
+          ' metrów, zuzyto: ' +
+          zuzyto +
+          ' metrów o wadze: ' +
+          zuzyto * 0.0066
       );
       return zuzyto * 0.0066;
     } else if (wll > 3) {
       console.log(
-        'nawinieto [132.000] ' + nawinieto + ' metrów, zuzyto: ' + zuzyto + ' metrów o wadze: ' + zuzyto * 0.0132
+        'nawinieto [132.000] ' +
+          nawinieto +
+          ' metrów, zuzyto: ' +
+          zuzyto +
+          ' metrów o wadze: ' +
+          zuzyto * 0.0132
       );
       return zuzyto * 0.0132;
     } else {
@@ -205,15 +219,24 @@ export class WagaService {
       if (teraz.getHours() > 9) {
         // ustalam kiedy przerwa
         const przerwaII = new Date(teraz).setHours(11, 30, 0);
-        console.log('przerwaII', new Date(przerwaII).getHours() + ':', new Date(przerwaII).getMinutes());
+        console.log(
+          'przerwaII',
+          new Date(przerwaII).getHours() + ':',
+          new Date(przerwaII).getMinutes()
+        );
 
         // krotka wersja
-        const krotko = new Date(przerwaII).getTime() - new Date(teraz).getTime();
-        console.log('krotko ', Math.floor(krotko / 3600000) + ':' + (Math.floor(krotko / 60000) % 60));
+        const krotko =
+          new Date(przerwaII).getTime() - new Date(teraz).getTime();
+        console.log(
+          'krotko ',
+          Math.floor(krotko / 3600000) + ':' + (Math.floor(krotko / 60000) % 60)
+        );
 
         // dluzsza wersja
         // ile milisekund do przerwy
-        const przerwaIIa = new Date(przerwaII).getTime() - new Date(teraz).getTime();
+        const przerwaIIa =
+          new Date(przerwaII).getTime() - new Date(teraz).getTime();
         console.log('przerwaIIa', przerwaIIa);
 
         // za ile minut
@@ -352,8 +375,6 @@ export class WagaService {
         return { zmiana: 'nocka', doKonca: doKoncaDnia };
       }
       return { zmiana: 'nocka', doKonca: doKoncaDnia, przerwaI: przerwa1 };
-
-
     }
     return { zmiana: 'niewiem która zmiana' };
   }
@@ -361,7 +382,7 @@ export class WagaService {
   czasSztuki(czas, szt) {
     const czasWms = czas * 60000;
     let i = 0;
-    const time = setInterval(function () {
+    const time = setInterval(function() {
       i++;
       console.log('teoretycznie powinnienes juz miec zrobione ' + i);
     }, czasWms);
