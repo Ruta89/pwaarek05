@@ -38,7 +38,7 @@
       <p>
         waga: {{ list.waga * list.szt | number }}, ({{ list.waga | number }}kg)
       </p>
-      <p>wym: {{ (list.licznik + (list.l1 * 2 + 5)) * list.szt }}/m szpuli</p>
+      <p>wym: {{ (list.licznik + (list.l1 * 2 + 5)) * list.szt  | number}}/m szpuli</p>
       <!-- <p> dodany: {{list.created | date:'dd-MM HH:mm'  }} </p> -->
       <p>plan. kon.: {{ list.planowanyKoniec | date: 'HH:mm' }}</p>
       <div class="btn">
