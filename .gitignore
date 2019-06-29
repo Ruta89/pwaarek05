@@ -49,3 +49,4 @@ yarn.lock
 src/environments/environment.prod.ts
 src/environments/environment.ts
 /.firebase
+hosting.*
