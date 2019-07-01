@@ -1,0 +1,105 @@
+<form [formGroup]="naddatkiForm" novalidate (ngSubmit)="onSubmit()">
+  <mat-card class="naddatki-card">
+    <mat-card-header>
+      <mat-card-title>Dodaj ustawienie maszyny</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-select placeholder="Maszyna" formControlName="maszyna">
+              <mat-option
+                *ngFor="let maszyna of maszyny"
+                [value]="maszyna.abbreviation"
+              >
+                {{ maszyna.name }}
+              </mat-option>
+            </mat-select>
+            <mat-error
+              *ngIf="naddatkiForm.controls['maszyna'].hasError('required')"
+            >
+              Wybierz maszynę <strong>wymagane</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input
+              matInput
+              type="number"
+              placeholder="Wll"
+              formControlName="tonaz"
+            />
+            <mat-error
+              *ngIf="naddatkiForm.controls['tonaz'].hasError('required')"
+            >
+              Jaki tonaz? <strong>wymagane</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input
+              matInput
+              type="number"
+              placeholder="Długość"
+              formControlName="dlugosc"
+            />
+            <mat-error
+              *ngIf="naddatkiForm.controls['dlugosc'].hasError('required')"
+            >
+              Jaka długość? <strong>L1</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input
+              matInput
+              #naddatek
+              maxlength="5"
+              placeholder="Naddatek"
+              type="number"
+              formControlName="naddatek"
+            />
+            <mat-hint align="end">{{ naddatek.value.length }} / 5</mat-hint>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-radio-group formControlName="rekaw">
+            <mat-radio-button value="rekaw">Rękaw</mat-radio-button>
+            <mat-radio-button value="gurt">Gurt</mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <textarea
+              matInput
+              placeholder="Notatka"
+              formControlName="notatka"
+            ></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit">Zapisz</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
+<mat-list>
+  <mat-list-item *ngFor="let naddatek of listaNaddatkow"
+    >Maszyna: {{ naddatek.maszyna }}, Wll: {{ naddatek.tonaz }}, L1:
+    {{ naddatek.dlugosc }}, rękaw/gurt: {{ naddatek.rekaw }}, naddatek:
+    {{ naddatek.naddatek }}, notatka: {{ naddatek.notatka }}</mat-list-item
+  >
+</mat-list>

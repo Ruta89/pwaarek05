@@ -1,0 +1,139 @@
+<div class="row" style="margin-top: 25px; margin-left: 25px;">
+  <mat-form-field>
+    <mat-label>WLL </mat-label>
+    <input matInput type="number" placeholder="tonaz" [(ngModel)]="tonazCzas" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>L1 </mat-label>
+    <input
+      matInput
+      type="number"
+      placeholder="dlugosc"
+      [(ngModel)]="dlugoscCzas"
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>min/szt </mat-label>
+    <input
+      matInput
+      type="number"
+      placeholder="minuty"
+      [(ngModel)]="minutyCzas"
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Sztuk </mat-label>
+    <input matInput type="number" placeholder="sztuk" [(ngModel)]="sztukCzas" />
+  </mat-form-field>
+  <button
+    mat-raised-button
+    type="button"
+    (click)="CreateCzas()"
+    [disabled]="!tonazCzas || !dlugoscCzas || !minutyCzas || !sztukCzas"
+    color="primary"
+  >
+    + Dodaj
+  </button>
+</div>
+<div class="row" style="margin-top: 25px;">
+  <h2>Razem: {{this.sumaCzas}} minut.</h2>
+  <div class="col-md-3">
+    <div class="card" style="width: 18rem;" *ngFor="let item of czasy">
+      <div class="card-body" *ngIf="!item.isEdit; else elseBlock">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>{{ item.Razem }} minut</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <div>
+              Wll: <strong>{{ item.Tonaz }}</strong> t, L1
+              <strong>{{ item.Dlugosc }}</strong> m, Czas:
+              <strong>{{ item.Minuty }}</strong> min, szt:
+              <strong>{{ item.Sztuk }}</strong>
+            </div>
+          </mat-card-content>
+          <mat-card-actions>
+            <button
+              mat-raised-button
+              (click)="EditRecord(item)"
+              color="primary"
+            >
+              Edytuj
+            </button>
+            <button
+              mat-raised-button
+              (click)="RemoveRecord(item.id)"
+              color="danger"
+            >
+              Usun
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+      <ng-template #elseBlock>
+        <div class="card-body">
+          <h5 class="card-title">Edycja</h5>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-12">
+                <mat-form-field>
+                  <mat-label>WLL </mat-label>
+
+                  <input
+                    matInput
+                    type="number"
+                    [(ngModel)]="item.EditTonaz"
+                    placeholder="Edytuj tonaz"
+                  />
+                </mat-form-field>
+              </div>
+              <div class="col-md-12">
+                <mat-form-field>
+                  <mat-label>Długość </mat-label>
+
+                  <input
+                    matInput
+                    type="number"
+                    [(ngModel)]="item.EditDlugosc"
+                    placeholder="Edytuj dlugosc"
+                  />
+                </mat-form-field>
+              </div>
+              <div class="col-md-12">
+                <mat-form-field>
+                  <mat-label>min/szt </mat-label>
+
+                  <input
+                    matInput
+                    type="number"
+                    [(ngModel)]="item.EditMinuty"
+                    placeholder="Edytuj minuty"
+                  />
+                </mat-form-field>
+              </div>
+              <div class="col-md-12">
+                <mat-form-field>
+                  <mat-label>Sztuk </mat-label>
+
+                  <input
+                    matInput
+                    type="number"
+                    placeholder="sztuk"
+                    [(ngModel)]="item.EditSztuk"
+                    placeholder="Edytuj sztuki"
+                  />
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <button mat-raised-button (click)="item.isEdit = false">
+            Anuluj
+          </button>
+          <button mat-raised-button color="accent" (click)="UpdateRecord(item)">
+            Edytuj
+          </button>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>

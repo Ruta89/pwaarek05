@@ -6,6 +6,7 @@ export const environment = {
     databaseURL: 'https://pwaarek.firebaseio.com',
     projectId: 'pwaarek',
     storageBucket: 'pwaarek.appspot.com',
-    messagingSenderId: '139758750414'
+    messagingSenderId: '139758750414',
+    appId: '1:139758750414:web:c8a0412e7a6adeba'
   }
 };

@@ -21,7 +21,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   }
 
   function nara(agent) {
-    let close = agent.close();
+    const close = agent.close();
     close.ask('Do usłyszenia.'); // Use Actions on Google library
     agent.add(close); // Add Actions on Google library responses to your agent's response
   }
@@ -31,7 +31,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   }
   function zw(agent) {
     agent.add(`Zawiesia wężowe to elastyczne zawiesie bezkońcowe składające się z nośnego rdzenia z przędzy, całkowicie zamkniętego w tkanej powłoce – z osprzętem lub bez.
-Rdzeń nośny jest wielokrotnie zwijaną przędzą – włókno poliestrowe, poliamidowe lub polipropylenowe. Tkana powłoka to w zależności od typu zawiesia impregnowany rękaw ochronny chroniący przędzę przed uszkodzeniem w odpowiadającym tonażowi kolorze, posiada trwałe oznakowania 
+Rdzeń nośny jest wielokrotnie zwijaną przędzą – włókno poliestrowe, poliamidowe lub polipropylenowe. Tkana powłoka to w zależności od typu zawiesia impregnowany rękaw ochronny chroniący przędzę przed uszkodzeniem w odpowiadającym tonażowi kolorze, posiada trwałe oznakowania
 jak np. czarny nadruk określający limit nośności prostej oraz czarne treski – każda kreska oznacza jedną tonę nośności zawiesia. 
 `);
   }
@@ -171,14 +171,14 @@ jak np. czarny nadruk określający limit nośności prostej oraz czarne treski 
         szp = 12;
       }
 
-      let nawinieto = licznikMetr * dlugosc + (dlugosc * 2 + 5);
-      let zuzyto = nawinieto * szp;
+      const nawinieto = licznikMetr * dlugosc + (dlugosc * 2 + 5);
+      const zuzyto = nawinieto * szp;
       if (tonaz < 4) {
-        let wynikWaga = +(zuzyto * 0.0066).toFixed(2);
-        let odp2 = ` OK. ${tonaz.toString()} ton ${dlugosc} metrów waży ${wynikWaga} kilogramów.`;
+        const wynikWaga = +(zuzyto * 0.0066).toFixed(2);
+        const odp2 = ` OK. ${tonaz.toString()} ton ${dlugosc} metrów waży ${wynikWaga} kilogramów.`;
         agent.add(odp2);
 
-        let odp =
+        const odp =
           'Nawinięto ' +
           +nawinieto.toFixed(2) +
           ' metrów,   zużyto: ' +
@@ -189,11 +189,11 @@ jak np. czarny nadruk określający limit nośności prostej oraz czarne treski 
 
         agent.add(odp);
       } else if (tonaz > 3) {
-        let wynikWaga = +(zuzyto * 0.0132).toFixed(2);
-        let odp2 = ` OK. ${tonaz.toString()} ton ${dlugosc} metrów waży ${wynikWaga} kilogramów.`;
+        const wynikWaga = +(zuzyto * 0.0132).toFixed(2);
+        const odp2 = ` OK. ${tonaz.toString()} ton ${dlugosc} metrów waży ${wynikWaga} kilogramów.`;
         agent.add(odp2);
 
-        let odp =
+        const odp =
           'Nawinięto ' +
           +nawinieto.toFixed(2) +
           ' metrów,   zużyto: ' +
@@ -215,7 +215,7 @@ jak np. czarny nadruk określający limit nośności prostej oraz czarne treski 
   }
 
   function dlugoscZakladki(agent) {
-    let tonaz = agent.parameters.tonaz;
+    const tonaz = agent.parameters.tonaz;
     console.log(`User requested   ${tonaz}  wlll`);
     let convertedTemp;
     // Sent the context to store the parameter information
@@ -228,44 +228,44 @@ jak np. czarny nadruk określający limit nośności prostej oraz czarne treski 
       }
     });
     if (tonaz === 1) {
-      let convertedTemp = 30;
+      const convertedTemp = 30;
       agent.add(`${tonaz} ton ma ${convertedTemp} centymetrów zakładki.`);
     }
     if (tonaz === 2) {
-      let convertedTemp = 30;
+      const convertedTemp = 30;
       agent.add(`${tonaz} ton ma ${convertedTemp} centymetrów zakładki.`);
     }
     if (tonaz === 3) {
-      let convertedTemp = 30;
+      const convertedTemp = 30;
       agent.add(`${tonaz} ton ma ${convertedTemp} centymetrów zakładki.`);
     }
     if (tonaz === 4) {
-      let convertedTemp = 40;
+      const convertedTemp = 40;
       agent.add(`${tonaz} ton ma ${convertedTemp} centymetrów zakładki.`);
     }
     if (tonaz === 5) {
-      let convertedTemp = 50;
+      const convertedTemp = 50;
       agent.add(`${tonaz} ton ma ${convertedTemp} centymetrów zakładki.`);
     }
     if (tonaz === 6) {
-      let convertedTemp = 60;
+      const convertedTemp = 60;
       agent.add(`${tonaz} ton ma ${convertedTemp} centymetrów zakładki.`);
     }
     if (tonaz === 8) {
-      let convertedTemp = 60;
+      const convertedTemp = 60;
       agent.add(`${tonaz} ton ma    ${convertedTemp} centymetrów zakładki. `);
     }
     if (agent.parameters.tonaz === 10) {
-      let convertedTemp = 60;
+      const convertedTemp = 60;
       agent.add(`${tonaz} ton ma    ${convertedTemp} centymetrów zakładki.  `);
     } else {
-      let convertedTemp = 100;
+      const convertedTemp = 100;
       agent.add(`${tonaz} ton ma    ${convertedTemp} centymetrów zakładki.  `);
     }
   }
 
   function ileSzpul(agent) {
-    let tonaz = agent.parameters.tonaz;
+    const tonaz = agent.parameters.tonaz;
     switch (tonaz) {
       case 1:
         agent.add(` Potrzebujesz 1 szpule cieńkich nici na ${tonaz}.`);
@@ -337,8 +337,8 @@ jak np. czarny nadruk określający limit nośności prostej oraz czarne treski 
   }
 
   function ustawLicznik(agent) {
-    let tonaz = Number(agent.parameters.tonaz);
-    let dlugosc = Number(agent.parameters.dlugosc);
+    const tonaz = Number(agent.parameters.tonaz);
+    const dlugosc = Number(agent.parameters.dlugosc);
     if (!tonaz) {
       agent.add(`Podaj tonaż.`);
     }
@@ -484,7 +484,7 @@ jak np. czarny nadruk określający limit nośności prostej oraz czarne treski 
   }
 
   function googleAssistantHandler(agent) {
-    let conv = agent.conv(); // Get Actions on Google library conv instance
+    const conv = agent.conv(); // Get Actions on Google library conv instance
     conv.ask('Witam Cię z biblioteki Actions on Google'); // Use Actions on Google library
     agent.add(conv); // Add Actions on Google library responses to your agent's response
   }
@@ -499,74 +499,90 @@ jak np. czarny nadruk określający limit nośności prostej oraz czarne treski 
       agent.add(` Nie wiem jaka dlugosc pakujesz.`);
     }
 
+    if (tonaz === 0.5) {
+      if (dlugosc === 1) {
+        agent.add(`${tonaz} tony ${dlugosc} metry  raz spiąć banderolą, pakować po 10 sztuk a  wiązkę zepnij 2 razy taśmą. `);
+      }
+    }
+
     if (tonaz === 1) {
+      if (dlugosc === 0.5) {
+        agent.add(`${tonaz} tony ${dlugosc} metry  raz spiąć banderolą, pakować po 10 sztuk a  wiązkę zepnij 2 razy taśmą. `);
+      }
+
       if (dlugosc === 1) {
         agent.add(` 1 tona 1 metr banderoluj raz, pakuj po 10 sztuk i dwa razy zepnij taśmą. `);
       }
+      if (dlugosc === 1.5) {
+        agent.add(`${tonaz} tony ${dlugosc} metry  dwa razy spiąć banderolą, pakować po 10 sztuk a  wiązkę zepnij 2 razy taśmą. `);
+      }
 
       if (dlugosc === 2) {
-        agent.add(` 1 tona 2 metry banderoluj dwa razy, pakuj po 5 sztuk i    raz   taśmą. `);
+        agent.add(` ${tonaz} tony ${dlugosc}  banderoluj dwa razy, pakuj po 5 sztuk i    raz   taśmą. `);
+      }
+      if (dlugosc === 2.5) {
+        agent.add(` ${tonaz} tony ${dlugosc} metry  tasmą raz zepnij, pakuj po 5 sztuk i    raz   taśmą. `);
       }
       if (dlugosc === 3) {
-        agent.add(` 1 tona  3 metry spiąć   raz, pakować po 5 sztuk i raz spiać wiązkę. `);
+        agent.add(` ${tonaz} tony ${dlugosc} metry tasmą raz zepnij, pakuj po 5 sztuk i    raz   taśmą. `);
       }
       if (dlugosc === 4) {
-        agent.add(` 1 tona 4 metry spiać raz pakować po 5 sztuk i raz taśmą.`);
+        agent.add(` ${tonaz} tony ${dlugosc} metry tasmą raz zepnij, pakuj po 5 sztuk i    raz   taśmą. `);
       }
     } // 1 tona
 
     if (tonaz === 2) {
       if (dlugosc === 1) {
-        agent.add(` 2 tony 1 metr  banderola jeden raz, pakuj  po 10 sztuk i 2 razy  spinaj.`);
+        agent.add(` ${tonaz} tony ${dlugosc} metry  banderola jeden raz, pakuj  po 10 sztuk i 2 razy  spinaj.`);
       }
       if (dlugosc === 2) {
-        agent.add(` 2 tony 2 metry  banderola dwa razy, pakuj po 5 sztuk i raz spinaj.`);
+        agent.add(`${tonaz} tony ${dlugosc} metry banderola dwa razy, pakuj po 5 sztuk i raz spinaj.`);
       }
       if (dlugosc === 3) {
-        agent.add(` 2 tony 3 metry spiąć dwa razy, pakuj po 5 sztuk i wiązkę zepnij taśmą. `);
+        agent.add(`${tonaz} tony ${dlugosc} metry spiąć dwa razy, pakuj po 5 sztuk i wiązkę zepnij taśmą. `);
       }
       if (dlugosc === 4) {
-        agent.add(` 2 tony 4 metry spiąć dwa razy, pakuj po 5 sztuk i wiązkę zepnij taśmą.  `);
+        agent.add(` ${tonaz} tony ${dlugosc} metry spiąć dwa razy, pakuj po 5 sztuk i wiązkę zepnij taśmą.  `);
       }
       if (dlugosc === 5) {
-        agent.add(` 2 tony 5 metrów spiąć dwa razy pakować osobno.`);
+        agent.add(` ${tonaz} tony ${dlugosc} metry spiąć dwa razy pakować osobno.`);
       }
     } // 2 tony
     if (tonaz === 3) {
       if (dlugosc === 1) {
-        agent.add(` 3 tony 1 metr  banderola jeden raz, pakuj po 10 sztuk i  2 razy spinaj.`);
+        agent.add(`${tonaz} tony ${dlugosc} metry banderola jeden raz, pakuj po 10 sztuk i  2 razy spinaj.`);
       }
       if (dlugosc === 2) {
-        agent.add(` 3 tony 2 metry  banderola dwa razy, pakuj po 5 sztuk i raz spinaj.`);
+        agent.add(` ${tonaz} tony ${dlugosc} metry  banderola dwa razy, pakuj po 5 sztuk i raz spinaj.`);
       }
       if (dlugosc === 3) {
         agent.add(` ${tonaz} tony ${dlugosc} metry spiąć dwa razy, pakuj po 5 sztuk,  wiązkę zepnij 2 razy taśmą. `);
       }
       if (dlugosc === 4) {
-        agent.add(` 3 tony 4 metry spiąć dwa razy, pakuj po 5 sztuk i wiązkę zepnij taśmą dwa razy.  `);
+        agent.add(`${tonaz} tony ${dlugosc} metry spiąć dwa razy, pakuj po 5 sztuk i wiązkę zepnij taśmą dwa razy.  `);
       }
       if (dlugosc === 5) {
-        agent.add(` 3 tony 5 metrów spiąć dwa razy pakować osobno.`);
+        agent.add(`${tonaz} tony ${dlugosc} metry spiąć dwa razy pakować osobno.`);
       }
     } // 3 tony
 
     if (tonaz === 4) {
       if (dlugosc === 1) {
-        agent.add(` 4 tony 1 metr spiąć jeden raz, pakować po 5 sztuk wiązkę też spiąć raz`);
+        agent.add(` ${tonaz} tony ${dlugosc} metry metr spiąć jeden raz, pakować po 5 sztuk wiązkę też spiąć raz`);
       }
       if (dlugosc === 2) {
-        agent.add(` 4 tony 2 metry spiąć dwa raz, pakować po 5 sztuk wiązkę spiąć raz`);
+        agent.add(`${tonaz} tony ${dlugosc} metry metry spiąć dwa raz, pakować po 5 sztuk wiązkę spiąć raz`);
       }
       if (dlugosc === 4) {
-        agent.add(` 4 tony 4 metry spiąć dwa razy, pakuj po 5 sztuk i wiązkę zepnij taśmą dwa razy.  `);
+        agent.add(`${tonaz} tony ${dlugosc}  metry spiąć dwa razy, pakuj po 5 sztuk i wiązkę zepnij taśmą dwa razy.  `);
       }
       if (dlugosc >= 5) {
-        agent.add(` 4 tony ${dlugosc} metrów spiąć dwa razy pakować osobno.`);
+        agent.add(` ${tonaz} tony ${dlugosc} metry metrów spiąć dwa razy pakować osobno.`);
       }
     } // 4 tony
   }
 
-  let intentMap = new Map();
+  const intentMap = new Map();
   intentMap.set('Default Welcome Intent', welcome);
   intentMap.set('Default Fallback Intent', fallback);
   intentMap.set('dzien', dzien);

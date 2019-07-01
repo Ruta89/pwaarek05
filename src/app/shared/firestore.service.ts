@@ -7,7 +7,10 @@ import {
 import { Observable } from 'rxjs';
 import { Item } from '../wagi/waga-lista/waga-lista.component';
 import { WagaService } from './waga.service';
-
+import { Razem } from '../czas.service';
+export interface RazemWaga {
+  waga: number;
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -19,6 +22,9 @@ export class FirestoreService {
   formData: Item;
 
   czasCollection: AngularFirestoreCollection<any>;
+  // uploadsCollection: AngularFirestoreCollection<any>;
+  // uploads: Observable<any[]>;
+
   constructor(private afs: AngularFirestore, private wService: WagaService) {
     this.itemsCollection = this.afs.collection('zleceniaTest', ref =>
       ref.orderBy('created', 'asc')
@@ -42,7 +48,12 @@ export class FirestoreService {
   }
 
   getItems() {
-    return this.afs.collection('zleceniaTest').snapshotChanges();
+    return this.afs
+      .collection('zleceniaTest', ref => ref.orderBy('created', 'desc'))
+      .snapshotChanges();
+  }
+  getPliki() {
+    return this.afs.collection('pliki').snapshotChanges();
   }
 
   addItem(item: Item) {
@@ -95,5 +106,18 @@ export class FirestoreService {
     // let itemT = item.edit['true'];
     this.afs.doc(`zleceniaTest/${item.id}`).update(item);
     this.wService.reset();
+  }
+
+  sumaCzasu() {
+    return this.afs.collection<Razem>('zleceniaTest').snapshotChanges();
+  }
+  sumaWagi() {
+    return this.afs.collection<RazemWaga>('zleceniaTest').snapshotChanges();
+  }
+  uploadURL(url) {
+    console.log('url service: ', url);
+    console.log('url service: ', ...url);
+
+    //  this.uploadsCollection.add({ 'url': url });
   }
 }

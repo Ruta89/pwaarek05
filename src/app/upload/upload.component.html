@@ -1,0 +1,20 @@
+<div class="container">
+  <h2>Wgraj</h2>
+
+  <input type="file" (change)="uploadFile($event)" />
+  <div>{{ uploadPercent | async }}</div>
+  <br />
+
+  <div *ngIf="downloadURL">
+    <a [href]="downloadURL">{{ downloadURL }}</a>
+  </div>
+  <br /><br />
+
+  <div *ngIf="listaPlikow">
+    <div *ngFor="let plik of listaPlikow">
+      <a [href]="plik.url">{{ plik.name }}</a
+      ><br />
+      <!-- {{ plik.name }} -->
+    </div>
+  </div>
+</div>

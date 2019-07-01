@@ -2,7 +2,6 @@
   <mat-grid-tile>
     <form [formGroup]="service.form">
       <div class="container-form">
-
         <mat-form-field>
           <mat-label>WLL </mat-label>
           <input matInput formControlName="wll" type="number" />
@@ -16,12 +15,10 @@
         <mat-form-field>
           <mat-label>czas </mat-label>
           <input matInput formControlName="czas" type="number" />
-
         </mat-form-field>
         <mat-form-field>
           <mat-label>szt </mat-label>
           <input matInput formControlName="szt" type="number" />
-
         </mat-form-field>
         <mat-form-field>
           <mat-label>Partia </mat-label>
@@ -30,15 +27,23 @@
         </mat-form-field>
         <input formControlName="edit" type="hidden" />
         <div class="btn">
-          <div *ngIf="service.form.value.edit === false  ">
-            <button mat-raised-button [disabled]="!service.form.valid" (click)="saveForm(service.form.value)"
-              color="primary">
+          <div *ngIf="service.form.value.edit === false">
+            <button
+              mat-raised-button
+              [disabled]="!service.form.valid"
+              (click)="saveForm(service.form.value)"
+              color="primary"
+            >
               Wyślij
             </button>
           </div>
-          <div *ngIf="service.form.value.edit === true ">
-            <button mat-raised-button [disabled]="!service.form.valid" (click)="update(service.form.value)"
-              color="primary">
+          <div *ngIf="service.form.value.edit === true">
+            <button
+              mat-raised-button
+              [disabled]="!service.form.valid"
+              (click)="update(service.form.value)"
+              color="primary"
+            >
               Modyfikuj
             </button>
           </div>
@@ -47,22 +52,20 @@
             Anuluj
           </button>
         </div>
-
       </div>
-
     </form>
   </mat-grid-tile>
   <mat-grid-tile class="wynikiStyl">
     <div *ngIf="value">
-      <p> wll: {{ value.wll }} </p>
-      <p> l1: {{ value.l1 }}</p>
-      <p> czas: {{ value.czas }}</p>
-      <p> szt: {{ value.szt }}</p>
-      <p> partia: {{ value.partia }}</p>
-      <p> licznik: {{ licznik }} </p>
-      <p> szpule: {{ szpule }} </p>
-      <p> waga: {{ waga }} </p>
-      <p> dodany: {{ value.created | date }} </p>
+      <p>wll: {{ value.wll }}</p>
+      <p>l1: {{ value.l1 }}</p>
+      <p>czas: {{ value.czas }}</p>
+      <p>szt: {{ value.szt }}</p>
+      <p>partia: {{ value.partia }}</p>
+      <p>licznik: {{ licznik }}</p>
+      <p>szpule: {{ szpule }}</p>
+      <p>waga: {{ waga }}</p>
+      <p>dodany: {{ value.created | date }}</p>
     </div>
   </mat-grid-tile>
 </mat-grid-list>

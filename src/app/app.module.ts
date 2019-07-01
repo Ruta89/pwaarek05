@@ -28,6 +28,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatTreeModule } from '@angular/material/tree';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NavComponent } from './nav/nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
@@ -42,9 +44,15 @@ import { WagaListaComponent } from './wagi/waga-lista/waga-lista.component';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireStorageModule, StorageBucket } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { FirestoreService } from './shared/firestore.service';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { NrArtkComponent } from './nr-artk/nr-artk.component';
+import { CzasComponent } from './czas/czas.component';
+import { NaddatkiComponent } from './naddatki/naddatki.component';
+import { UploadComponent } from './upload/upload.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,7 +64,11 @@ import { FirestoreService } from './shared/firestore.service';
     DragDropComponent,
     WagiComponent,
     WagaComponent,
-    WagaListaComponent
+    WagaListaComponent,
+    NrArtkComponent,
+    CzasComponent,
+    NaddatkiComponent,
+    UploadComponent
   ],
   imports: [
     BrowserModule,
@@ -90,17 +102,19 @@ import { FirestoreService } from './shared/firestore.service';
     MatFormFieldModule,
     MatInputModule,
     MatRadioModule,
-    MatSelectModule,
     MatCheckboxModule,
     MatDatepickerModule,
     MatNativeDateModule,
     MatButtonModule,
+    MatSlideToggleModule,
+    MatAutocompleteModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    FlexLayoutModule
   ],
-  providers: [],
+  providers: [  { provide: StorageBucket, useValue: 'pwaarek.appspot.com' }],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

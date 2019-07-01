@@ -1,13 +1,22 @@
-
 <mat-card>
   <mat-card-header>
-    <mat-card-title>{{ zmiana.zmiana   }}</mat-card-title> 
+    <mat-card-title>{{ zmiana.zmiana }}</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    Do konca {{zmiana.doKonca}}. <span *ngIf="zmiana.przerwaI"> przerwa I: {{zmiana.przerwaI}} </span><span *ngIf="zmiana.przerwaII"> przerwa II: {{zmiana.przerwaII}} </span>
-  </mat-card-content> 
+    <span *ngIf="sumaOblicz">
+      razem:<b> {{ sumaOblicz | number }} minut</b> ({{
+        sumaOblicz / 60 | number
+      }}) </span
+    ><br />
+    <span *ngIf="sumaWag">
+      suma:<b> {{ sumaWag | number }} kg</b> </span
+    ><br />
+    Do konca {{ zmiana.doKonca }}.
+    <span *ngIf="zmiana.przerwaI"> przerwa I: {{ zmiana.przerwaI }} </span
+    ><span *ngIf="zmiana.przerwaII"> przerwa II: {{ zmiana.przerwaII }} </span>
+  </mat-card-content>
 </mat-card>
-<mat-grid-list cols="2" rowHeight="400px" *ngFor="let list of list">
+<mat-grid-list cols="2" rowHeight="450px" *ngFor="let list of list">
   <mat-grid-tile>
     <div class="container">
       <img src="assets/{{ list.wll }}.jpg" alt="wll Img: {{ list.wll }}" />
@@ -17,24 +26,21 @@
     <div class="container2">
       <p>wll: {{ list.wll }}</p>
       <p>l1: {{ list.l1 }}</p>
-      <p>licznik: {{ list.licznik }}</p>
+      <p>licznik: {{ math.ceil(list.licznik) }}</p>
+      <!-- <p>licznik: {{ list.licznik }}</p> -->
       <p>szpule: {{ list.szpule }}</p>
       <p>partia: {{ list.partia }}</p>
       <p>
-        czas: {{ list.czas * list.szt | number }} ( {{ list.czas }} )
-        {{ (list.czas * list.szt) / 60 | number }} godz
+        czas: {{ list.czas * list.szt | number }} ({{ list.czas }})
+        {{ (list.czas * list.szt) / 60 | number }}g.
       </p>
       <p>szt: {{ list.szt }}</p>
       <p>
-        waga: {{ list.waga * list.szt | number }}, ({{ list.waga | number }} kg
-        )
+        waga: {{ list.waga * list.szt | number }}, ({{ list.waga | number }}kg)
       </p>
-      <p>
-        ile wymian: {{ (list.licznik + (list.l1 * 2 + 5)) * list.szt }} / metrow
-        w szpuli
-      </p>
+      <p>wym: {{ (list.licznik + (list.l1 * 2 + 5)) * list.szt  | number}}/m szpuli</p>
       <!-- <p> dodany: {{list.created | date:'dd-MM HH:mm'  }} </p> -->
-      <p>planowany koniec: {{ list.planowanyKoniec | date: 'HH:mm' }}</p>
+      <p>plan. kon.: {{ list.planowanyKoniec | date: 'HH:mm' }}</p>
       <div class="btn">
         <button mat-raised-button color="primary" (click)="update(list)">
           Edytuj

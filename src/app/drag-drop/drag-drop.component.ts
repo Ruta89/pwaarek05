@@ -8,7 +8,7 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 })
 export class DragDropComponent {
   todo = [
-    '5t, 2m,  777888/00/1 x3357 10tsz', 
+    '5t, 2m,  777888/00/1 x3357 10tsz',
     '2t, 3m,  777888/00/1 x3357 80tsz',
     '20t, 8m, 777888/00/1 x3357  2tsz'
   ];

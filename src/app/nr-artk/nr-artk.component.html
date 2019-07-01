@@ -1,0 +1,51 @@
+<mat-card>
+  <mat-card-content>
+    <!-- {{stateInput.value}} -->
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <input
+          #stateInput
+          (keyup)="(0)"
+          matInput
+          placeholder="Nr. artykułu"
+          type="number"
+          aria-label="State"
+          [matAutocomplete]="auto"
+          [formControl]="stateCtrl"
+        />
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option
+            (onSelectionChange)="
+              stateInput.value != undefined && onEnter($event)
+            "
+            *ngFor="let state of filteredStates | async"
+            [value]="state.artykul"
+          >
+            <img
+              style="vertical-align:middle;"
+              aria-hidden
+              src="{{ state.color }}"
+              height="50"
+            />
+            <span>{{ state.tonaz / 1000 }}t </span> |
+            <small> {{ state.rodzaj }} </small> |
+            <small> {{ state.artykul }} </small>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <br />
+
+      <mat-slide-toggle
+        [checked]="stateCtrl.disabled"
+        (change)="stateCtrl.disabled ? stateCtrl.enable() : stateCtrl.disable()"
+      >
+        Wyłączyć?
+      </mat-slide-toggle>
+    </form>
+
+    <!-- Copyright 2017 Google Inc. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license -->
+  </mat-card-content>
+</mat-card>
