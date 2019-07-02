@@ -1,5 +1,5 @@
 # pwaarek05
 
-## czerwiec
+## lipiec
 
-09062019
+01072019
