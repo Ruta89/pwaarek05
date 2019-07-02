@@ -2,7 +2,7 @@
   "name": "pwaarek 201907",
   "short_name": "pwaarek07",
   "theme_color": "#FFA500",
-  "background_color": "#fafafa",
+  "background_color": "#ebebeb",
   "display": "fullscreen",
   "scope": "/",
   "start_url": "/",
