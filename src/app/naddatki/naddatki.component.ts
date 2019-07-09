@@ -57,4 +57,13 @@ export class NaddatkiComponent implements OnInit {
     console.log(this.naddatkiForm.value);
     this.naddatkiService.dodajNaddatek(this.naddatkiForm.value);
   }
+  delete() {
+    return alert('usuwam');
+  }
+  hide() {
+    return alert('archiwizuje');
+  }
+  dodano() {
+    return alert('dodano: data...');
+  }
 }

@@ -96,10 +96,25 @@
     </mat-card-actions>
   </mat-card>
 </form>
-<mat-list>
-  <mat-list-item *ngFor="let naddatek of listaNaddatkow"
-    >Maszyna: {{ naddatek.maszyna }}, Wll: {{ naddatek.tonaz }}, L1:
-    {{ naddatek.dlugosc }}, rękaw/gurt: {{ naddatek.rekaw }}, naddatek:
-    {{ naddatek.naddatek }}, notatka: {{ naddatek.notatka }}</mat-list-item
-  >
-</mat-list>
+<div class="lista">
+  <mat-list>
+    <mat-list-item *ngFor="let naddatek of listaNaddatkow">
+      <mat-icon mat-list-icon (click)="dodano()">note</mat-icon>
+      <h4 mat-line>
+        <small>Maszyna:</small> {{ naddatek.maszyna }},
+        <small> Rękaw/gurt: </small>{{ naddatek.rekaw }}
+      </h4>
+      <p mat-line>Wll: {{ naddatek.tonaz }}, L1: {{ naddatek.dlugosc }}</p>
+      <p mat-line>Naddatek: {{ naddatek.naddatek }}</p>
+
+      <p mat-line>Notatka:</p>
+      <p mat-line>
+        <small>{{ naddatek.notatka }}</small>
+      </p>
+      <p mat-line>
+        <mat-icon (click)="delete()" mat-list-icon>delete</mat-icon>
+        <mat-icon (click)="hide()">visibility_off</mat-icon>
+      </p>
+    </mat-list-item>
+  </mat-list>
+</div>
