@@ -38,6 +38,7 @@ export class WagaComponent implements OnInit {
       szpule: this.szpule,
       licznik: this.licznik,
       waga: this.waga,
+      archive: false,
       ...form
     };
     console.log(this.value);
@@ -45,7 +46,7 @@ export class WagaComponent implements OnInit {
     setTimeout(() => {
       this.onClear();
       this.reset();
-    }, 4000);
+    }, 400);
   }
 
   saveForm(form) {
@@ -53,7 +54,7 @@ export class WagaComponent implements OnInit {
     this.firestoreService.addForm(form);
     setTimeout(() => {
       this.onClear();
-    }, 5000);
+    }, 500);
   }
 
   update(d) {

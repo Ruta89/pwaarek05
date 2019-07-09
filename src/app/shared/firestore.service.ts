@@ -49,7 +49,9 @@ export class FirestoreService {
 
   getItems() {
     return this.afs
-      .collection('zleceniaTest', ref => ref.orderBy('created', 'desc'))
+      .collection('zleceniaTest', ref =>
+        ref.where('archive', '==', false).orderBy('created', 'desc')
+      )
       .snapshotChanges();
   }
   getPliki() {
@@ -78,6 +80,7 @@ export class FirestoreService {
       szpule: szpul,
       licznik: licznikM,
       waga: wagaSzt,
+      archive: false,
       ...item
     };
 
@@ -119,5 +122,11 @@ export class FirestoreService {
     console.log('url service: ', ...url);
 
     //  this.uploadsCollection.add({ 'url': url });
+  }
+  archiveS(item: Item) {
+    console.log('s archive: ', item);
+    // let itemT = item.edit['true'];
+    const archiveData = { archive: true };
+    this.afs.doc(`zleceniaTest/${item.id}`).update(archiveData);
   }
 }

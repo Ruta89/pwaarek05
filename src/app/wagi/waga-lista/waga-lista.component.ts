@@ -22,6 +22,7 @@ export interface Item {
   edit?: boolean;
   created?: number;
   planowanyKoniec?: number;
+  archive?: boolean;
 }
 
 @Component({
@@ -113,5 +114,8 @@ export class WagaListaComponent implements OnInit {
       }, 0);
       // console.log(this.sumaWag);
     });
+  }
+  archive(item: Item) {
+    return this.firestoreService.archiveS(item);
   }
 }
