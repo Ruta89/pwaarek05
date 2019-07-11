@@ -30,6 +30,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTreeModule } from '@angular/material/tree';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NavComponent } from './nav/nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
@@ -52,6 +53,7 @@ import { NrArtkComponent } from './nr-artk/nr-artk.component';
 import { CzasComponent } from './czas/czas.component';
 import { NaddatkiComponent } from './naddatki/naddatki.component';
 import { UploadComponent } from './upload/upload.component';
+import { WagaDetailComponent } from './wagi/waga-detail/waga-detail.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +70,8 @@ import { UploadComponent } from './upload/upload.component';
     NrArtkComponent,
     CzasComponent,
     NaddatkiComponent,
-    UploadComponent
+    UploadComponent,
+    WagaDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -84,6 +87,7 @@ import { UploadComponent } from './upload/upload.component';
     MatInputModule,
     MatSelectModule,
     MatRadioModule,
+    MatSnackBarModule,
     ReactiveFormsModule,
     FormsModule,
     LayoutModule,
@@ -114,7 +118,7 @@ import { UploadComponent } from './upload/upload.component';
     AngularFireStorageModule,
     FlexLayoutModule
   ],
-  providers: [  { provide: StorageBucket, useValue: 'pwaarek.appspot.com' }],
+  providers: [{ provide: StorageBucket, useValue: 'pwaarek.appspot.com' }],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

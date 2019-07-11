@@ -114,10 +114,22 @@ export class WagaService {
     if (wll === 1.5) {
       licznikMetr = 17;
     }
-    if (wll <= 4) {
+    if (wll === 2) {
       licznikMetr = 22;
     }
-    if (wll > 4 && wll < 10) {
+    if (wll === 3) {
+      licznikMetr = 22;
+    }
+    if (wll === 4) {
+      licznikMetr = 22;
+    }
+    if (wll === 5) {
+      licznikMetr = 20;
+    }
+    if (wll === 6) {
+      licznikMetr = 20;
+    }
+    if (wll === 8) {
       licznikMetr = 20;
     }
     if (wll === 10) {
@@ -162,7 +174,7 @@ export class WagaService {
     if (wll === 300) {
       licznikMetr = 384;
     }
-    console.log('licznik: ' + licznikMetr * l1 + ', 1m: ' + licznikMetr);
+    // console.log('licznik: ' + licznikMetr * l1 + ', 1m: ' + licznikMetr);
     return licznikMetr * l1;
   }
   ustawWage(wll, dl) {
@@ -402,5 +414,4 @@ export class WagaService {
   updateS(s) {
     console.log('s update: ', s);
   }
-
 }

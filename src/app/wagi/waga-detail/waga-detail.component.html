@@ -1,0 +1,84 @@
+<div *ngIf="list">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Zlecenie </mat-card-title>
+      <mat-card-subtitle *ngIf="!list.auf">Dodaj auftrag</mat-card-subtitle>
+      <mat-card-subtitle *ngIf="list.auf">Zmień auftrag</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div>
+        <mat-form-field>
+          <input matInput placeholder="auf" name="auf" [(ngModel)]="list.auf" />
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="addAuf(list.id, list.auf)"
+      >
+        Zapisz
+      </button>
+    </mat-card-actions>
+  </mat-card>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title *ngIf="!list.partia">Dodaj partię </mat-card-title>
+      <mat-card-title *ngIf="list.partia">Zmień partię</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="partia"
+          name="partia"
+          [(ngModel)]="list.partia"
+        />
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="addPartia(list.id, list.partia)"
+      >
+        Zapisz
+      </button>
+    </mat-card-actions>
+  </mat-card>
+
+  <mat-card>
+    <p>
+      <small>
+        Dodano: {{ list.created | date: ' HH:mm   dd.MM.yy' }} <br />
+        Koniec {{ list.planowanyKoniec | date: ' HH:mm   dd.MM.yy' }}<br />
+        id: {{ list.id }}<br />
+        auf: {{ list.auf }}<br />
+        czas: {{ list.czas }} <br />
+        szt {{ list.szt }} <br />
+        licznik {{ list.licznik }} <br />
+        partia {{ list.partia }} <br />
+        waga {{ list.waga }} <br />
+        szpule {{ list.szpule }} <br />
+        archive {{ list.archive }} <br />
+        edit {{ list.archive }}
+      </small>
+    </p>
+    <mat-card-actions>
+      <button mat-raised-button color="accent" (click)="close()">
+        Zamknij
+      </button>
+    </mat-card-actions>
+  </mat-card>
+  <!-- <div>
+    <mat-form-field>
+      <input matInput placeholder="szt" [(ngModel)]="list.szt" />
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <input matInput placeholder="partia" [(ngModel)]="list.partia" />
+    </mat-form-field>
+  </div> -->
+</div>

@@ -8,6 +8,7 @@ import {
 import { Observable } from 'rxjs';
 import { FirestoreService } from 'src/app/shared/firestore.service';
 import { WagaService } from 'src/app/shared/waga.service';
+import { CzasService } from 'src/app/czas.service';
 
 export interface Item {
   id: string;
@@ -23,6 +24,7 @@ export interface Item {
   created?: number;
   planowanyKoniec?: number;
   archive?: boolean;
+  auf?: number;
 }
 
 @Component({
@@ -42,10 +44,12 @@ export class WagaListaComponent implements OnInit {
   rwag;
   sumaWag;
   math: Math;
+  selectedItem: Item;
   constructor(
     private afs: AngularFirestore,
     private firestoreService: FirestoreService,
-    private serviceWaga: WagaService
+    private serviceWaga: WagaService,
+    private czasService: CzasService
   ) {
     this.math = Math;
   }
@@ -80,13 +84,16 @@ export class WagaListaComponent implements OnInit {
       partia: item.partia,
       edit: true
     });
+    this.czasService.snackBar('aktualizuje...', 'x');
   }
   addItem(item: Item) {
     // console.log('addItem: ', item);
     this.firestoreService.addItem(item);
+    this.czasService.snackBar('dodaje...', 'x');
   }
   delete(item: Item) {
     this.firestoreService.deleteItem(item);
+    this.czasService.snackBar('usuwam...', 'x');
   }
 
   razemSuma() {
@@ -100,6 +107,12 @@ export class WagaListaComponent implements OnInit {
         return a + b;
       }, 0);
       // console.log(this.sumaOblicz);
+      // setTimeout(() => {
+      //   this.czasService.snackBar(
+      //     'Masz wyrobione: ' + Math.round(this.sumaOblicz) + ' min. ',
+      //     'OK'
+      //   );
+      // }, 1000);
     });
   }
   razemSumaWagi() {
@@ -113,9 +126,21 @@ export class WagaListaComponent implements OnInit {
         return a + b;
       }, 0);
       // console.log(this.sumaWag);
+      // setTimeout(() => {
+      //   this.czasService.snackBar(
+      //     'Łączna waga: ' + this.sumaWag + ' kg. ',
+      //     'OK'
+      //   );
+      // }, 5000);
     });
   }
   archive(item: Item) {
+    this.czasService.snackBar('Archiwizuje', 'X');
     return this.firestoreService.archiveS(item);
+  }
+  onSelect(item: Item): void {
+    this.selectedItem = item;
+
+    this.czasService.snackBar('Wybrałeś: ' + item.id, 'X');
   }
 }

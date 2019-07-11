@@ -16,12 +16,20 @@
     ><span *ngIf="zmiana.przerwaII"> przerwa II: {{ zmiana.przerwaII }} </span>
   </mat-card-content>
 </mat-card>
-<mat-grid-list cols="2" rowHeight="450px" *ngFor="let list of list">
+
+<app-waga-detail [list]="selectedItem"></app-waga-detail>
+
+<mat-grid-list cols="2" rowHeight="500px" *ngFor="let list of list">
   <mat-grid-tile>
-    <div class="container">
+    <div
+      class="container"
+      [class.selected]="list === selectedItem"
+      (click)="onSelect(list)"
+    >
       <img src="assets/{{ list.wll }}.jpg" alt="wll Img: {{ list.wll }}" />
     </div>
   </mat-grid-tile>
+
   <mat-grid-tile>
     <div class="container2">
       <p>wll: {{ list.wll }}</p>
@@ -48,11 +56,13 @@
         <button mat-raised-button color="primary" (click)="update(list)">
           Edytuj
         </button>
-        <button mat-raised-button color="accent" (click)="archive(list)">
-          Archiwizuj
-        </button>
+
         <button mat-raised-button color="danger" (click)="delete(list)">
           Usun
+        </button>
+
+        <button mat-raised-button color="accent" (click)="archive(list)">
+          Archiwizuj
         </button>
       </div>
       <hr />

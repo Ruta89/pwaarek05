@@ -27,7 +27,7 @@ export class FirestoreService {
 
   constructor(private afs: AngularFirestore, private wService: WagaService) {
     this.itemsCollection = this.afs.collection('zleceniaTest', ref =>
-      ref.orderBy('created', 'asc')
+      ref.where('archive', '==', false).orderBy('created', 'desc')
     );
 
     this.itemsCollection.snapshotChanges().subscribe(actionArray => {
@@ -110,12 +110,32 @@ export class FirestoreService {
     this.afs.doc(`zleceniaTest/${item.id}`).update(item);
     this.wService.reset();
   }
+  updateAuf(id, auf) {
+    console.log('servis auf: ' + auf);
+    const itemAuf = { auf: auf };
+    // let itemT = item.edit['true'];
+    return this.afs.doc(`zleceniaTest/${id}`).update(itemAuf);
+  }
+
+  updatePartia(id, partia) {
+    console.log('servis partia: ' + partia);
+    const itemPartia = { partia: partia };
+    return this.afs.doc(`zleceniaTest/${id}`).update(itemPartia);
+  }
 
   sumaCzasu() {
-    return this.afs.collection<Razem>('zleceniaTest').snapshotChanges();
+    return this.afs
+      .collection<Razem>('zleceniaTest', ref =>
+        ref.where('archive', '==', false).orderBy('created', 'desc')
+      )
+      .snapshotChanges();
   }
   sumaWagi() {
-    return this.afs.collection<RazemWaga>('zleceniaTest').snapshotChanges();
+    return this.afs
+      .collection<RazemWaga>('zleceniaTest', ref =>
+        ref.where('archive', '==', false).orderBy('created', 'desc')
+      )
+      .snapshotChanges();
   }
   uploadURL(url) {
     console.log('url service: ', url);
