@@ -493,15 +493,15 @@ jak np. czarny nadruk określający limit nośności prostej oraz czarne treski 
     const tonaz = agent.parameters.tonaz;
     const dlugosc = agent.parameters.dlugosc;
     if (!tonaz) {
-      agent.add(` Nie wiem jaki tonaz pakujesz.`);
+      agent.add(` Nie wiem jaki tonaż pakujesz.`);
     }
     if (!dlugosc) {
-      agent.add(` Nie wiem jaka dlugosc pakujesz.`);
+      agent.add(` Nie wiem jaką długość pakujesz.`);
     }
 
     if (tonaz === 0.5) {
       if (dlugosc === 1) {
-        agent.add(`${tonaz} tony ${dlugosc} metry  raz spiąć banderolą, pakować po 10 sztuk a  wiązkę zepnij 2 razy taśmą. `);
+        agent.add(`${tonaz} tony ${dlugosc} metry  raz spiąć banderolą, pakować po 10 sztuk, a  wiązkę zepnij 2 razy taśmą. `);
       }
     }
 
@@ -518,22 +518,22 @@ jak np. czarny nadruk określający limit nośności prostej oraz czarne treski 
       }
 
       if (dlugosc === 2) {
-        agent.add(` ${tonaz} tony ${dlugosc}  banderoluj dwa razy, pakuj po 5 sztuk i    raz   taśmą. `);
+        agent.add(` ${tonaz} tony ${dlugosc}  banderoluj dwa razy, pakuj po 5 sztuk i  wiązkę  raz   taśmą. `);
       }
       if (dlugosc === 2.5) {
-        agent.add(` ${tonaz} tony ${dlugosc} metry  tasmą raz zepnij, pakuj po 5 sztuk i    raz   taśmą. `);
+        agent.add(` ${tonaz} tony ${dlugosc} metry  taśmą raz zepnij, pakuj po 5 sztuk i  wiązkę  raz   taśmą. `);
       }
       if (dlugosc === 3) {
-        agent.add(` ${tonaz} tony ${dlugosc} metry tasmą raz zepnij, pakuj po 5 sztuk i    raz   taśmą. `);
+        agent.add(` ${tonaz} tony ${dlugosc} metry taśmą raz zepnij, pakuj po 5 sztuk i  wiązkę  raz   taśmą. `);
       }
       if (dlugosc === 4) {
-        agent.add(` ${tonaz} tony ${dlugosc} metry tasmą raz zepnij, pakuj po 5 sztuk i    raz   taśmą. `);
+        agent.add(` ${tonaz} tony ${dlugosc} metry taśmą raz zepnij, pakuj po 5 sztuk i wiązkę   raz   taśmą. `);
       }
     } // 1 tona
 
     if (tonaz === 2) {
       if (dlugosc === 1) {
-        agent.add(` ${tonaz} tony ${dlugosc} metry  banderola jeden raz, pakuj  po 10 sztuk i 2 razy  spinaj.`);
+        agent.add(` ${tonaz} tony ${dlugosc} metry  banderola jeden raz, pakuj  po 10 sztuk i wiązkę 2 razy  spinaj.`);
       }
       if (dlugosc === 2) {
         agent.add(`${tonaz} tony ${dlugosc} metry banderola dwa razy, pakuj po 5 sztuk i raz spinaj.`);

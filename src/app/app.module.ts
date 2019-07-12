@@ -113,7 +113,7 @@ import { WagaDetailComponent } from './wagi/waga-detail/waga-detail.component';
     MatSlideToggleModule,
     MatAutocompleteModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule, // imports firebase/firestore, only needed for database features
+    AngularFirestoreModule.enablePersistence(), // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
     AngularFireStorageModule,
     FlexLayoutModule
