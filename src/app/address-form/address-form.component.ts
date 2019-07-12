@@ -91,9 +91,11 @@ export class AddressFormComponent {
 
   onSubmit() {
     alert('Thanks!');
+    navigator.vibrate([500, 250, 500, 250, 1000 ]);
   }
 
   savePakowanie() {
+    navigator.vibrate(500);
     alert(`Wll ${this.pakowanieForm.value.ptonaz} t, L1: ${this.pakowanieForm.value.pdlugosc} m.`);
   }
 }
