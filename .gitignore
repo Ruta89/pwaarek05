@@ -46,7 +46,8 @@ Thumbs.db
 /dist
 yarn.lock
 *.cache
-src/environments/environment.prod.ts
-src/environments/environment.ts
+src/environments
 /.firebase
 hosting.*
+/documentation
+/.firebase
