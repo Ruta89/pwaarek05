@@ -122,6 +122,11 @@ export class FirestoreService {
     const itemPartia = { partia: partia };
     return this.afs.doc(`zleceniaTest/${id}`).update(itemPartia);
   }
+  updateCzas(id, czas) {
+    console.log('servis czAs: ' + czas);
+    const itemCzas = { czas: czas };
+    return this.afs.doc(`zleceniaTest/${id}`).update(itemCzas);
+  }
 
   sumaCzasu() {
     return this.afs

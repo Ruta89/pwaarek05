@@ -24,18 +24,45 @@
   </mat-card>
   <mat-card>
     <mat-card-header>
-      <mat-card-title *ngIf="!list.partia">Dodaj partię </mat-card-title>
-      <mat-card-title *ngIf="list.partia">Zmień partię</mat-card-title>
+      <mat-card-title *ngIf="!list.czas">Dodaj czas </mat-card-title>
+      <mat-card-title *ngIf="list.czas">Zmień czas</mat-card-title>
     </mat-card-header>
     <mat-card-content>
       <mat-form-field>
         <input
           matInput
-          placeholder="partia"
-          name="partia"
-          [(ngModel)]="list.partia"
+          placeholder="czas"
+          name="czas"
+          [(ngModel)]="list.czas"
         />
       </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="addCzas(list.id, list.czas)"
+      >
+        Zapisz
+      </button>
+    </mat-card-actions>
+  </mat-card>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Przędza </mat-card-title>
+      <mat-card-subtitle *ngIf="!list.partia">Nici</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div>
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="nici"
+            name="partia"
+            [(ngModel)]="list.partia"
+          />
+        </mat-form-field>
+      </div>
     </mat-card-content>
     <mat-card-actions>
       <button
@@ -47,14 +74,14 @@
       </button>
     </mat-card-actions>
   </mat-card>
-
   <mat-card>
     <p>
       <small>
         Dodano: {{ list.created | date: ' HH:mm   dd.MM.yy' }} <br />
         Koniec {{ list.planowanyKoniec | date: ' HH:mm   dd.MM.yy' }}<br />
         id: {{ list.id }}<br />
-        auf: {{ list.auf }}<br />
+        auf:
+        {{ list.auf }}<br />
         czas: {{ list.czas }} <br />
         szt {{ list.szt }} <br />
         licznik {{ list.licznik }} <br />
@@ -71,14 +98,4 @@
       </button>
     </mat-card-actions>
   </mat-card>
-  <!-- <div>
-    <mat-form-field>
-      <input matInput placeholder="szt" [(ngModel)]="list.szt" />
-    </mat-form-field>
-  </div>
-  <div>
-    <mat-form-field>
-      <input matInput placeholder="partia" [(ngModel)]="list.partia" />
-    </mat-form-field>
-  </div> -->
 </div>

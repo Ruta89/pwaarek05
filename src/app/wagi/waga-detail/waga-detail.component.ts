@@ -23,6 +23,10 @@ export class WagaDetailComponent implements OnInit {
     // console.log('id: ' + id + ' auf: ' + auf);
     // alert('id: ' + id + ' auf: ' + auf);
     this.czasService.snackBar('Dodano zlecenie: ' + auf, 'X');
+
+    const aufStr =
+      auf.slice(0, 6) + '/' + auf.slice(6, 8) + '/' + auf.slice(8, 10);
+    alert(aufStr);
     return this.firestoreService.updateAuf(id, auf);
   }
   addPartia(id, partia) {
@@ -30,5 +34,9 @@ export class WagaDetailComponent implements OnInit {
     // alert('id: ' + id + ' auf: ' + auf);
     this.czasService.snackBar('Dodano partie: ' + partia, 'X');
     return this.firestoreService.updatePartia(id, partia);
+  }
+  addCzas(id, czas) {
+    this.czasService.snackBar('Dodano czas: ' + czas, ' minut');
+    return this.firestoreService.updateCzas(id, czas);
   }
 }

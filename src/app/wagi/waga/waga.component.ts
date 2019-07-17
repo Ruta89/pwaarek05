@@ -17,6 +17,7 @@ export class WagaComponent implements OnInit {
   licznik;
   tempSzpule;
   waga;
+  add$ = false;
   constructor(
     public service: WagaService,
     private firestoreService: FirestoreService,
@@ -65,6 +66,7 @@ export class WagaComponent implements OnInit {
 
     this.firestoreService.updateItem(d);
     this.openSnackBar('Zaktualizowano', 'Zamknij');
+    this.add$ = false;
   }
 
   reset() {
@@ -74,11 +76,15 @@ export class WagaComponent implements OnInit {
     this.licznik = 0;
     this.tempSzpule = 0;
     this.waga = 0;
+    this.add$ = false;
   }
 
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {
       duration: 2000
     });
+  }
+  show() {
+    this.add$ = true;
   }
 }

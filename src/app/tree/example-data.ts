@@ -1,22 +1,22 @@
 /** Example file/folder data. */
 export const files = [
   {
-    name: 'material2',
+    name: 'Dzień 29',
     type: 'folder',
     children: [
       {
-        name: 'src',
+        name: 'Zlecenie',
         type: 'folder',
         children: [
           {
-            name: 'cdk',
+            name: 'Przedza',
             type: 'folder',
             children: [
-              { name: 'package.json', type: 'file' },
-              { name: 'BUILD.bazel', type: 'file' },
+              { name: 'przedza', type: 'file' },
+              { name: 'waga', type: 'file' }
             ]
           },
-          { name: 'lib', type: 'folder' }
+          { name: 'Pozycja', type: 'folder' }
         ]
       }
     ]

@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/firestore';
+import {
+  AngularFirestoreCollection,
+  AngularFirestore
+} from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
 export interface Naddatek {
@@ -9,6 +12,7 @@ export interface Naddatek {
   naddatek: number;
   rekaw: string;
   notatka: string;
+  visable?: boolean;
 }
 @Injectable({
   providedIn: 'root'
@@ -27,5 +31,4 @@ export class NaddatkiService {
   dodajNaddatek(naddatek: Naddatek) {
     this.naddatkiCollection.add(naddatek);
   }
-
 }

@@ -1,31 +1,42 @@
-<mat-grid-list cols="2" rowHeight="360px">
+<mat-grid-list cols="2" rowHeight="380px">
   <mat-grid-tile>
-    <form [formGroup]="service.form">
-      <div class="container-form">
-        <mat-form-field>
-          <mat-label>WLL </mat-label>
-          <input matInput formControlName="wll" type="number" />
-          <mat-error>Wpisz tonaż!</mat-error>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>L1 </mat-label>
-          <input matInput formControlName="l1" type="number" />
-          <mat-error>Wpisz długość!</mat-error>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>czas </mat-label>
-          <input matInput formControlName="czas" type="number" />
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>szt </mat-label>
-          <input matInput formControlName="szt" type="number" />
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Partia </mat-label>
-          <input matInput formControlName="partia" type="number" />
-          <mat-error>Wpisz nici!</mat-error>
-        </mat-form-field>
-        <input formControlName="edit" type="hidden" />
+    <mat-card *ngIf="add$">
+      <mat-card-header>
+        <mat-card-title>Dodaj</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <form [formGroup]="service.form">
+          <div class="container-form">
+            <mat-form-field>
+              <mat-label>WLL </mat-label>
+              <input matInput formControlName="wll" type="number" />
+              <mat-error>Wpisz tonaż!</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>L1 </mat-label>
+              <input matInput formControlName="l1" type="number" />
+              <mat-error>Wpisz długość!</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Czas </mat-label>
+              <input matInput formControlName="czas" type="number" />
+              <mat-error>Wpisz czas!</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Sztuk </mat-label>
+              <input matInput formControlName="szt" type="number" />
+              <mat-error>Wpisz ilosc!</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Partia </mat-label>
+              <input matInput formControlName="partia" type="number" />
+              <mat-error>Wpisz nici!</mat-error>
+            </mat-form-field>
+            <input formControlName="edit" type="hidden" />
+          </div>
+        </form>
+      </mat-card-content>
+      <mat-card-actions>
         <div class="btn">
           <div *ngIf="service.form.value.edit === false">
             <button
@@ -52,8 +63,8 @@
             Anuluj
           </button>
         </div>
-      </div>
-    </form>
+      </mat-card-actions>
+    </mat-card>
   </mat-grid-tile>
   <mat-grid-tile class="wynikiStyl">
     <div *ngIf="value">
@@ -69,3 +80,6 @@
     </div>
   </mat-grid-tile>
 </mat-grid-list>
+<mat-card *ngIf="!add$">
+  <button mat-raised-button (click)="show()">Dodaj</button></mat-card
+>

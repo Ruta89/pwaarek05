@@ -8,30 +8,132 @@ import { Observable, of as observableOf, merge } from 'rxjs';
 export interface TableItem {
   name: string;
   id: number;
+  note: string;
+  date: string;
 }
 
 // TODO: replace this with real data from your application
 const EXAMPLE_DATA: TableItem[] = [
-  {id: 1, name: 'Hydrogen'},
-  {id: 2, name: 'Helium'},
-  {id: 3, name: 'Lithium'},
-  {id: 4, name: 'Beryllium'},
-  {id: 5, name: 'Boron'},
-  {id: 6, name: 'Carbon'},
-  {id: 7, name: 'Nitrogen'},
-  {id: 8, name: 'Oxygen'},
-  {id: 9, name: 'Fluorine'},
-  {id: 10, name: 'Neon'},
-  {id: 11, name: 'Sodium'},
-  {id: 12, name: 'Magnesium'},
-  {id: 13, name: 'Aluminum'},
-  {id: 14, name: 'Silicon'},
-  {id: 15, name: 'Phosphorus'},
-  {id: 16, name: 'Sulfur'},
-  {id: 17, name: 'Chlorine'},
-  {id: 18, name: 'Argon'},
-  {id: 19, name: 'Potassium'},
-  {id: 20, name: 'Calcium'},
+  {
+    id: 1,
+    name: 'Tadek',
+    note: 'jhadsf oadsf jadsfk',
+    date: new Date().toLocaleString().toLocaleString()
+  },
+  {
+    id: 3,
+    name: 'Długa',
+    note: 'jhadsf oadsf jadsfk',
+    date: new Date().toLocaleString()
+  },
+  {
+    id: 2,
+    name: 'Kółko',
+    note: 'jhadsf oadsf jadsfk',
+    date: new Date().toLocaleString()
+  },
+  {
+    id: 4,
+    name: 'Słupki',
+    note: 'jhadsf oadsf jadsfk',
+    date: new Date().toLocaleString()
+  },
+  {
+    id: 5,
+    name: 'Boron',
+    note: 'jhadsf oadsf jadsfk',
+    date: new Date().toLocaleString()
+  },
+  {
+    id: 6,
+    name: 'Carbon',
+    note: 'jhadsf oadsf jadsfk',
+    date: new Date().toLocaleString()
+  },
+  {
+    id: 7,
+    name: 'Nitrogen',
+    note: 'jhadsf oadsf jadsfk',
+    date: new Date().toLocaleString()
+  },
+  {
+    id: 8,
+    name: 'Oxygen',
+    note: 'jhadsf oadsf jadsfk',
+    date: new Date().toLocaleString()
+  },
+  {
+    id: 9,
+    name: 'Fluorine',
+    note: 'jhadsf oadsf jadsfk',
+    date: new Date().toLocaleString()
+  },
+  {
+    id: 10,
+    name: 'Neon',
+    note: 'jhadsf oadsf jadsfk',
+    date: new Date().toLocaleString()
+  },
+  {
+    id: 11,
+    name: 'Sodium',
+    note: 'jhadsf oadsf jadsfk',
+    date: new Date().toLocaleString()
+  },
+  {
+    id: 12,
+    name: 'Magnesium',
+    note: 'jhadsf oadsf jadsfk',
+    date: new Date().toLocaleString()
+  },
+  {
+    id: 13,
+    name: 'Aluminum',
+    note: 'jhadsf oadsf jadsfk',
+    date: new Date().toLocaleString()
+  },
+  {
+    id: 14,
+    name: 'Silicon',
+    note: 'jhadsf oadsf jadsfk',
+    date: new Date().toLocaleString()
+  },
+  {
+    id: 15,
+    name: 'Phosphorus',
+    note: 'jhadsf oadsf jadsfk',
+    date: new Date().toLocaleString()
+  },
+  {
+    id: 16,
+    name: 'Sulfur',
+    note: 'jhadsf oadsf jadsfk',
+    date: new Date().toLocaleString()
+  },
+  {
+    id: 17,
+    name: 'Chlorine',
+    note: 'jhadsf oadsf jadsfk',
+    date: new Date().toLocaleString()
+  },
+  {
+    id: 18,
+    name: 'Argon',
+    note: 'jhadsf oadsf jadsfk',
+    date: new Date().toLocaleString()
+  },
+  {
+    id: 19,
+    name: 'Potassium',
+    note: 'jhadsf oadsf jadsfk',
+    date: new Date().toLocaleString()
+  },
+  {
+    id: 20,
+    name: 'Calcium',
+    note: 'jhadsf oadsf jadsfk',
+    date: new Date().toLocaleString()
+  }
 ];
 
 /**
@@ -63,9 +165,11 @@ export class TableDataSource extends DataSource<TableItem> {
     // Set the paginator's length
     this.paginator.length = this.data.length;
 
-    return merge(...dataMutations).pipe(map(() => {
-      return this.getPagedData(this.getSortedData([...this.data]));
-    }));
+    return merge(...dataMutations).pipe(
+      map(() => {
+        return this.getPagedData(this.getSortedData([...this.data]));
+      })
+    );
   }
 
   /**
@@ -95,9 +199,12 @@ export class TableDataSource extends DataSource<TableItem> {
     return data.sort((a, b) => {
       const isAsc = this.sort.direction === 'asc';
       switch (this.sort.active) {
-        case 'name': return compare(a.name, b.name, isAsc);
-        case 'id': return compare(+a.id, +b.id, isAsc);
-        default: return 0;
+        case 'name':
+          return compare(a.name, b.name, isAsc);
+        case 'id':
+          return compare(+a.id, +b.id, isAsc);
+        default:
+          return 0;
       }
     });
   }

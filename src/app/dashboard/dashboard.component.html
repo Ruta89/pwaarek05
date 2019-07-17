@@ -1,12 +1,48 @@
 <div class="grid-container">
   <h1 class="mat-h1">Pulpit</h1>
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        Dodaj
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div>
+        <form [formGroup]="addForm" novalidate (ngSubmit)="onSubmit()">
+          <mat-form-field>
+            <input matInput placeholder="wll" value="wll" />
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="dlugosc" value="dlugosc" />
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="szt" value="szt" />
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="czas" value="czas" />
+          </mat-form-field>
+        </form>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
   <mat-grid-list cols="2" rowHeight="350px">
-    <mat-grid-tile *ngFor="let card of (cards | async)" [colspan]="card.cols" [rowspan]="card.rows">
+    <mat-grid-tile
+      *ngFor="let card of cards | async"
+      [colspan]="card.cols"
+      [rowspan]="card.rows"
+    >
       <mat-card class="dashboard-card">
         <mat-card-header>
           <mat-card-title>
             {{ card.title }}
-            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+            <button
+              mat-icon-button
+              class="more-button"
+              [matMenuTriggerFor]="menu"
+              aria-label="Toggle menu"
+            >
               <mat-icon>more_vert</mat-icon>
             </button>
             <mat-menu #menu="matMenu" xPosition="before">
@@ -16,71 +52,20 @@
           </mat-card-title>
         </mat-card-header>
         <mat-card-content class="dashboard-card-content">
-          <div> {{ card.description }}</div>
+          <div>{{ card.description }}</div>
 
           <mat-card-actions>
-            <button mat-raised-button color="primary" type="submit">Wysli</button>
+            <button mat-raised-button color="primary" type="submit">
+              Wyslij
+            </button>
           </mat-card-actions>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
- 
-    <mat-grid-tile [colspan]="2"  >
-      <mat-card>
-        <mat-card-header>
-          <mat-card-title>
-            Dodaj
-
-
-          </mat-card-title>
-        </mat-card-header>
-        <mat-card-content class="dashboard-card-content">
-          <div>
-            <form [formGroup]="addForm" novalidate (ngSubmit)="onSubmit()">
-              <mat-form-field>
-                <input matInput placeholder="wll" value="wll">
-              </mat-form-field>
-              <mat-form-field>
-                <input matInput placeholder="dlugosc" value="dlugosc">
-              </mat-form-field>
-              <mat-form-field>
-                <input matInput placeholder="szt" value="szt">
-              </mat-form-field>
-              <mat-form-field>
-                <input matInput placeholder="czas" value="czas">
-              </mat-form-field>
-            </form>
-          </div>
-        </mat-card-content>
-      </mat-card>
-
- 
-      <mat-card>
-        <mat-card-header>
-          <mat-card-title>
-            Wykonano
-
-
-          </mat-card-title>
-        </mat-card-header>
-        <mat-card-content class="dashboard-card-content">
-          <div>
-            Zrobione Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet velit eos cupiditate quod earum vitae
-            maxime culpa, odit, voluptatem est cum nostrum? Est consequatur pariatur velit sit nobis dolor adipisci!
-          </div>
-        </mat-card-content>
-      </mat-card>
-
-
-    </mat-grid-tile>
   </mat-grid-list>
 </div>
 
-
-
-
 <div fxLayout="column">
-
   <h2>DeForce 1</h2>
   <div>
     <table border="1">
@@ -97,7 +82,9 @@
           </td>
         </tr>
         <tr>
-          <td style="text-align: center;border: 1px solid black;padding: 5px;background-color: #9900ff">
+          <td
+            style="text-align: center;border: 1px solid black;padding: 5px;background-color: #9900ff"
+          >
             &nbsp;
           </td>
           <td style="text-align: center;border: 1px solid black;padding: 5px">
@@ -108,7 +95,9 @@
           </td>
         </tr>
         <tr>
-          <td style="text-align: center;border: 1px solid black;padding: 5px;background-color: #006633">
+          <td
+            style="text-align: center;border: 1px solid black;padding: 5px;background-color: #006633"
+          >
             &nbsp;
           </td>
           <td style="text-align: center;border: 1px solid black;padding: 5px">
@@ -119,7 +108,9 @@
           </td>
         </tr>
         <tr>
-          <td style="text-align: center;border: 1px solid black;padding: 5px;background-color: #00ff33">
+          <td
+            style="text-align: center;border: 1px solid black;padding: 5px;background-color: #00ff33"
+          >
             &nbsp;
           </td>
           <td style="text-align: center;border: 1px solid black;padding: 5px">
@@ -130,7 +121,9 @@
           </td>
         </tr>
         <tr>
-          <td style="text-align: center;border: 1px solid black;padding: 5px;background-color: #ccff00">
+          <td
+            style="text-align: center;border: 1px solid black;padding: 5px;background-color: #ccff00"
+          >
             &nbsp;
           </td>
           <td style="text-align: center;border: 1px solid black;padding: 5px">
@@ -141,7 +134,9 @@
           </td>
         </tr>
         <tr>
-          <td style="text-align: center;border: 1px solid black;padding: 5px;background-color: #c0c0c0">
+          <td
+            style="text-align: center;border: 1px solid black;padding: 5px;background-color: #c0c0c0"
+          >
             &nbsp;
           </td>
           <td style="text-align: center;border: 1px solid black;padding: 5px">
@@ -152,7 +147,9 @@
           </td>
         </tr>
         <tr>
-          <td style="text-align: center;border: 1px solid black;padding: 5px;background-color: #cc0000">
+          <td
+            style="text-align: center;border: 1px solid black;padding: 5px;background-color: #cc0000"
+          >
             &nbsp;
           </td>
           <td style="text-align: center;border: 1px solid black;padding: 5px">
@@ -163,7 +160,9 @@
           </td>
         </tr>
         <tr>
-          <td style="text-align: center;border: 1px solid black;padding: 5px;background-color: #330000">
+          <td
+            style="text-align: center;border: 1px solid black;padding: 5px;background-color: #330000"
+          >
             &nbsp;
           </td>
           <td style="text-align: center;border: 1px solid black;padding: 5px">
@@ -174,7 +173,9 @@
           </td>
         </tr>
         <tr>
-          <td style="text-align: center;border: 1px solid black;padding: 5px;background-color: #0033ff">
+          <td
+            style="text-align: center;border: 1px solid black;padding: 5px;background-color: #0033ff"
+          >
             &nbsp;
           </td>
           <td style="text-align: center;border: 1px solid black;padding: 5px">
@@ -203,7 +204,9 @@
           </td>
         </tr>
         <tr>
-          <td style="text-align: center;border: 1px solid black;padding: 5px;background-color: #9900ff">
+          <td
+            style="text-align: center;border: 1px solid black;padding: 5px;background-color: #9900ff"
+          >
             &nbsp;
           </td>
           <td style="text-align: center;border: 1px solid black;padding: 5px">
@@ -214,7 +217,9 @@
           </td>
         </tr>
         <tr>
-          <td style="text-align: center;border: 1px solid black;padding: 5px;background-color: #006633">
+          <td
+            style="text-align: center;border: 1px solid black;padding: 5px;background-color: #006633"
+          >
             &nbsp;
           </td>
           <td style="text-align: center;border: 1px solid black;padding: 5px">
@@ -225,7 +230,9 @@
           </td>
         </tr>
         <tr>
-          <td style="text-align: center;border: 1px solid black;padding: 5px;background-color: #00ff33">
+          <td
+            style="text-align: center;border: 1px solid black;padding: 5px;background-color: #00ff33"
+          >
             &nbsp;
           </td>
           <td style="text-align: center;border: 1px solid black;padding: 5px">
@@ -236,7 +243,9 @@
           </td>
         </tr>
         <tr>
-          <td style="text-align: center;border: 1px solid black;padding: 5px;background-color: #ccff00">
+          <td
+            style="text-align: center;border: 1px solid black;padding: 5px;background-color: #ccff00"
+          >
             &nbsp;
           </td>
           <td style="text-align: center;border: 1px solid black;padding: 5px">
@@ -247,7 +256,9 @@
           </td>
         </tr>
         <tr>
-          <td style="text-align: center;border: 1px solid black;padding: 5px;background-color: #c0c0c0">
+          <td
+            style="text-align: center;border: 1px solid black;padding: 5px;background-color: #c0c0c0"
+          >
             &nbsp;
           </td>
           <td style="text-align: center;border: 1px solid black;padding: 5px">
@@ -258,7 +269,9 @@
           </td>
         </tr>
         <tr>
-          <td style="text-align: center;border: 1px solid black;padding: 5px;background-color: #cc0000">
+          <td
+            style="text-align: center;border: 1px solid black;padding: 5px;background-color: #cc0000"
+          >
             &nbsp;
           </td>
           <td style="text-align: center;border: 1px solid black;padding: 5px">
@@ -269,7 +282,9 @@
           </td>
         </tr>
         <tr>
-          <td style="text-align: center;border: 1px solid black;padding: 5px;background-color: #330000">
+          <td
+            style="text-align: center;border: 1px solid black;padding: 5px;background-color: #330000"
+          >
             &nbsp;
           </td>
           <td style="text-align: center;border: 1px solid black;padding: 5px">
@@ -280,7 +295,9 @@
           </td>
         </tr>
         <tr>
-          <td style="text-align: center;border: 1px solid black;padding: 5px;background-color: #0033ff">
+          <td
+            style="text-align: center;border: 1px solid black;padding: 5px;background-color: #0033ff"
+          >
             &nbsp;
           </td>
           <td style="text-align: center;border: 1px solid black;padding: 5px">
@@ -309,7 +326,9 @@
           </td>
         </tr>
         <tr>
-          <td style="text-align: center;border: 1px solid black;padding: 5px;background-color: #9900ff">
+          <td
+            style="text-align: center;border: 1px solid black;padding: 5px;background-color: #9900ff"
+          >
             &nbsp;
           </td>
           <td style="text-align: center;border: 1px solid black;padding: 5px">
@@ -320,7 +339,9 @@
           </td>
         </tr>
         <tr>
-          <td style="text-align: center;border: 1px solid black;padding: 5px;background-color: #006633">
+          <td
+            style="text-align: center;border: 1px solid black;padding: 5px;background-color: #006633"
+          >
             &nbsp;
           </td>
           <td style="text-align: center;border: 1px solid black;padding: 5px">
@@ -331,7 +352,9 @@
           </td>
         </tr>
         <tr>
-          <td style="text-align: center;border: 1px solid black;padding: 5px;background-color: #00ff33">
+          <td
+            style="text-align: center;border: 1px solid black;padding: 5px;background-color: #00ff33"
+          >
             &nbsp;
           </td>
           <td style="text-align: center;border: 1px solid black;padding: 5px">
@@ -342,7 +365,9 @@
           </td>
         </tr>
         <tr>
-          <td style="text-align: center;border: 1px solid black;padding: 5px;background-color: #ccff00">
+          <td
+            style="text-align: center;border: 1px solid black;padding: 5px;background-color: #ccff00"
+          >
             &nbsp;
           </td>
           <td style="text-align: center;border: 1px solid black;padding: 5px">
@@ -353,7 +378,9 @@
           </td>
         </tr>
         <tr>
-          <td style="text-align: center;border: 1px solid black;padding: 5px;background-color: #c0c0c0">
+          <td
+            style="text-align: center;border: 1px solid black;padding: 5px;background-color: #c0c0c0"
+          >
             &nbsp;
           </td>
           <td style="text-align: center;border: 1px solid black;padding: 5px">
@@ -364,7 +391,9 @@
           </td>
         </tr>
         <tr>
-          <td style="text-align: center;border: 1px solid black;padding: 5px;background-color: #cc0000">
+          <td
+            style="text-align: center;border: 1px solid black;padding: 5px;background-color: #cc0000"
+          >
             &nbsp;
           </td>
           <td style="text-align: center;border: 1px solid black;padding: 5px">
@@ -375,7 +404,9 @@
           </td>
         </tr>
         <tr>
-          <td style="text-align: center;border: 1px solid black;padding: 5px;background-color: #330000">
+          <td
+            style="text-align: center;border: 1px solid black;padding: 5px;background-color: #330000"
+          >
             &nbsp;
           </td>
           <td style="text-align: center;border: 1px solid black;padding: 5px">
@@ -386,7 +417,9 @@
           </td>
         </tr>
         <tr>
-          <td style="text-align: center;border: 1px solid black;padding: 5px;background-color: #0033ff">
+          <td
+            style="text-align: center;border: 1px solid black;padding: 5px;background-color: #0033ff"
+          >
             &nbsp;
           </td>
           <td style="text-align: center;border: 1px solid black;padding: 5px">
@@ -416,7 +449,9 @@
           </td>
         </tr>
         <tr>
-          <td style="text-align: center;border: 1px solid black;padding: 5px;background-color: #9900ff">
+          <td
+            style="text-align: center;border: 1px solid black;padding: 5px;background-color: #9900ff"
+          >
             &nbsp;
           </td>
           <td style="text-align: center;border: 1px solid black;padding: 5px">
@@ -427,7 +462,9 @@
           </td>
         </tr>
         <tr>
-          <td style="text-align: center;border: 1px solid black;padding: 5px;background-color: #006633">
+          <td
+            style="text-align: center;border: 1px solid black;padding: 5px;background-color: #006633"
+          >
             &nbsp;
           </td>
           <td style="text-align: center;border: 1px solid black;padding: 5px">
@@ -438,7 +475,9 @@
           </td>
         </tr>
         <tr>
-          <td style="text-align: center;border: 1px solid black;padding: 5px;background-color: #00ff33">
+          <td
+            style="text-align: center;border: 1px solid black;padding: 5px;background-color: #00ff33"
+          >
             &nbsp;
           </td>
           <td style="text-align: center;border: 1px solid black;padding: 5px">
@@ -449,7 +488,9 @@
           </td>
         </tr>
         <tr>
-          <td style="text-align: center;border: 1px solid black;padding: 5px;background-color: #ccff00">
+          <td
+            style="text-align: center;border: 1px solid black;padding: 5px;background-color: #ccff00"
+          >
             &nbsp;
           </td>
           <td style="text-align: center;border: 1px solid black;padding: 5px">
@@ -460,7 +501,9 @@
           </td>
         </tr>
         <tr>
-          <td style="text-align: center;border: 1px solid black;padding: 5px;background-color: #c0c0c0">
+          <td
+            style="text-align: center;border: 1px solid black;padding: 5px;background-color: #c0c0c0"
+          >
             &nbsp;
           </td>
           <td style="text-align: center;border: 1px solid black;padding: 5px">
@@ -471,7 +514,9 @@
           </td>
         </tr>
         <tr>
-          <td style="text-align: center;border: 1px solid black;padding: 5px;background-color: #cc0000">
+          <td
+            style="text-align: center;border: 1px solid black;padding: 5px;background-color: #cc0000"
+          >
             &nbsp;
           </td>
           <td style="text-align: center;border: 1px solid black;padding: 5px">
@@ -482,7 +527,9 @@
           </td>
         </tr>
         <tr>
-          <td style="text-align: center;border: 1px solid black;padding: 5px;background-color: #330000">
+          <td
+            style="text-align: center;border: 1px solid black;padding: 5px;background-color: #330000"
+          >
             &nbsp;
           </td>
           <td style="text-align: center;border: 1px solid black;padding: 5px">
@@ -493,7 +540,9 @@
           </td>
         </tr>
         <tr>
-          <td style="text-align: center;border: 1px solid black;padding: 5px;background-color: #0033ff">
+          <td
+            style="text-align: center;border: 1px solid black;padding: 5px;background-color: #0033ff"
+          >
             &nbsp;
           </td>
           <td style="text-align: center;border: 1px solid black;padding: 5px">
@@ -504,7 +553,9 @@
           </td>
         </tr>
         <tr>
-          <td style="text-align: center;border: 1px solid black;padding: 5px;background-color: #ff6600">
+          <td
+            style="text-align: center;border: 1px solid black;padding: 5px;background-color: #ff6600"
+          >
             &nbsp;
           </td>
           <td style="text-align: center;border: 1px solid black;padding: 5px">
