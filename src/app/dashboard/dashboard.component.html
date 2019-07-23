@@ -11,20 +11,25 @@
       <div>
         <form [formGroup]="addForm" novalidate (ngSubmit)="onSubmit()">
           <mat-form-field>
-            <input matInput placeholder="wll" value="wll" />
+            <input matInput placeholder="wll" formControlName="wll" />
           </mat-form-field>
           <mat-form-field>
-            <input matInput placeholder="dlugosc" value="dlugosc" />
+            <input matInput placeholder="dlugosc" formControlName="dlugosc" />
           </mat-form-field>
           <mat-form-field>
-            <input matInput placeholder="szt" value="szt" />
+            <input matInput placeholder="szt" formControlName="szt" />
           </mat-form-field>
           <mat-form-field>
-            <input matInput placeholder="czas" value="czas" />
+            <input matInput placeholder="czas" formControlName="czas" />
           </mat-form-field>
         </form>
       </div>
     </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="accent" type="submit" (click)="onSubmit()">
+        Wyslij
+      </button>
+    </mat-card-actions>
   </mat-card>
 
   <mat-grid-list cols="2" rowHeight="350px">

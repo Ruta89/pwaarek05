@@ -13,9 +13,9 @@ export class WagaDetailComponent implements OnInit {
   constructor(
     private firestoreService: FirestoreService,
     private czasService: CzasService
-  ) {}
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
   close() {
     this.list = null;
   }

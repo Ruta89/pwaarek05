@@ -20,7 +20,7 @@ export class FirestoreService {
   itemDoc: AngularFirestoreDocument<Item>;
   list: Item[];
   formData: Item;
-
+  partieAr = [];
   czasCollection: AngularFirestoreCollection<any>;
   // uploadsCollection: AngularFirestoreCollection<any>;
   // uploads: Observable<any[]>;
@@ -53,6 +53,24 @@ export class FirestoreService {
         ref.where('archive', '==', false).orderBy('created', 'desc')
       )
       .snapshotChanges();
+  }
+  getPartie() {
+    this.afs
+      .collection('zleceniaTest', ref =>
+        ref.where('archive', '==', false).orderBy('created', 'desc')
+      )
+      .snapshotChanges().subscribe(data => {
+        this.list = data.map(item => {
+          return {
+            id: item.payload.doc.id,
+            ...(item.payload.doc.data() as Item)
+          };
+        });
+        this.list.map(d => {
+          this.partieAr.push(d.partia.valueOf());
+        });
+        return this.partieAr;
+      });
   }
   getPliki() {
     return this.afs.collection('pliki').snapshotChanges();
@@ -149,9 +167,8 @@ export class FirestoreService {
     //  this.uploadsCollection.add({ 'url': url });
   }
   archiveS(item: Item) {
-    console.log('s archive: ', item);
-    // let itemT = item.edit['true'];
-    const archiveData = { archive: true };
+    console.log('s archive: ', item); 
+    const archiveData = { archive: true, archiveDate: new Date() };
     this.afs.doc(`zleceniaTest/${item.id}`).update(archiveData);
   }
 }

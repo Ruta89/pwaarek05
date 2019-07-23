@@ -18,15 +18,16 @@ export class WagaComponent implements OnInit {
   tempSzpule;
   waga;
   add$ = false;
+  partie;
   constructor(
     public service: WagaService,
     private firestoreService: FirestoreService,
     private fb: FormBuilder,
     private _snackBar: MatSnackBar
-  ) {}
+  ) { }
 
-  ngOnInit() {}
-
+  ngOnInit() {
+  }
   onClear() {
     this.service.form.reset();
     this.service.initializeFormGroup();

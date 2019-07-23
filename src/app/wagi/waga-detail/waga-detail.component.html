@@ -89,8 +89,11 @@
         waga {{ list.waga }} <br />
         szpule {{ list.szpule }} <br />
         archive {{ list.archive }} <br />
-        edit {{ list.archive }}
+        edit {{ list.archive }} <br />
       </small>
+      <span *ngIf="list.archiveDate"> </span>
+
+      <small>archiveDate: {{ list.archiveDate }} </small>
     </p>
     <mat-card-actions>
       <button mat-raised-button color="accent" (click)="close()">

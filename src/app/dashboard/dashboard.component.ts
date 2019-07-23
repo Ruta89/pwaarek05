@@ -56,15 +56,18 @@ export class DashboardComponent {
   constructor(
     private breakpointObserver: BreakpointObserver,
     private fb: FormBuilder
-  ) {}
+  ) { }
   addForm = this.fb.group({
-    wll: null,
+    wll: [null, Validators.required],
     dlugosc: [null, Validators.required],
     szt: [null, Validators.required],
-    czas: null
+    czas: [null, Validators.required],
   });
 
   onSubmit() {
-    alert('Dzięki!');
+    const message = `Dzięki, dodałeś ${this.addForm.value.wll}T,  ${this.addForm.value.dlugosc}m, ${this.addForm.value.czas}min,  ${this.addForm.value.szt}szt.`;
+    console.log(message);
+    alert(message);
+
   }
 }

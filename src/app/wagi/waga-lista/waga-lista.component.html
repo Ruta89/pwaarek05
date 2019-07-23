@@ -14,6 +14,9 @@
     Do konca {{ zmiana.doKonca }}.
     <span *ngIf="zmiana.przerwaI"> przerwa I: {{ zmiana.przerwaI }} </span
     ><span *ngIf="zmiana.przerwaII"> przerwa II: {{ zmiana.przerwaII }} </span>
+    <br /><span *ngIf="partieAr"
+      >ostatnie partie: {{ partieAr.toString() }}
+    </span>
   </mat-card-content>
 </mat-card>
 
