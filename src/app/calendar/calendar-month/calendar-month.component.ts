@@ -14,7 +14,33 @@ import {
 } from 'date-fns';
 import { CalendarEventAction, CalendarEventTimesChangedEvent } from 'angular-calendar';
 import { Subject } from 'rxjs';
+import { FirestoreService } from 'src/app/shared/firestore.service';
 
+export interface ICalendarEvent {
+  id?: any;
+  start: any;
+  end?: any;
+  title: string;
+  color?: any;
+  actions?: any;
+  allDay?: any;
+  resizable?: any;
+  // id?: string | number;
+  // start: Date;
+  // end?: Date;
+  // title: string;
+  // color?: EventColor;
+  // actions?: EventAction[];
+  // allDay?: boolean;
+  cssClass?: any;
+  // resizable?: {
+  //     beforeStart?: boolean;
+  //     afterEnd?: boolean;
+  // };
+  draggable?: any;
+  // meta?: MetaType;
+  meta?: any;
+}
 registerLocaleData(localePl);
 
 const colors: any = {
@@ -133,14 +159,42 @@ export class CalendarMonthComponent implements OnInit {
 
   refresh: Subject<any> = new Subject();
   activeDayIsOpen = true;
-
-  constructor(
+  dataSub;
+  constructor(private service: FirestoreService
   ) {
     this.locale = 'pl-PL';
     this.excludeDays = [0, 6];
+
   }
 
   ngOnInit() {
+    this.service.getCalendar().subscribe(data => {
+      this.dataSub = data.map(item => {
+        const eventsT = {
+          id: item.payload.doc.id,
+          ...(item.payload.doc.data() as ICalendarEvent)
+        };
+        const eventsTemp = [] as any;
+        const endT = new Date(eventsT.end.seconds * 1000);
+        const startT = new Date(eventsT.start.seconds * 1000);
+        eventsTemp.push({ ...eventsT, start: startT, end: endT });
+        // console.log('eventsT.start: ', eventsT.start); console.log('eventsT.start.seconds: ', eventsT.start.seconds);
+        // console.log('eventsTemp: ', eventsTemp);
+        // let eventU = {
+        //   ...eventsT,
+        //   start: new Date(eventsT.start.seconds), end: new Date(eventsT.end.seconds),
+        // }
+        // console.log('eventU: ', eventU);
+        this.events.push(...eventsTemp);
+        this.refresh.next();
+        setTimeout(() => {
+          // console.log('aEvents: ', this.events);
+          // console.log('eventsT: ', eventsT);
+        }, 2000);
+      });
+
+    });
+
   }
 
   handleEvent(action: string, event: CalendarEvent): void {

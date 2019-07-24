@@ -54,6 +54,11 @@ export class FirestoreService {
       )
       .snapshotChanges();
   }
+   getCalendar() {
+    return this.afs
+      .collection('calendar')
+      .snapshotChanges();
+  }
   getPartie() {
     this.afs
       .collection('zleceniaTest', ref =>
@@ -167,7 +172,7 @@ export class FirestoreService {
     //  this.uploadsCollection.add({ 'url': url });
   }
   archiveS(item: Item) {
-    console.log('s archive: ', item); 
+    console.log('s archive: ', item);
     const archiveData = { archive: true, archiveDate: new Date() };
     this.afs.doc(`zleceniaTest/${item.id}`).update(archiveData);
   }
