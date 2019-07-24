@@ -1,5 +1,9 @@
 <p>Kalendarz roboczy widok miesiaca</p>
 
+<button mat-raised-button (click)="addEvent()" color="primary">
+  Dodaj wydarzenie
+</button>
+
 <mwl-calendar-month-view-header [locale]="locale">
 </mwl-calendar-month-view-header>
 <mwl-calendar-month-view
@@ -7,6 +11,9 @@
   [events]="events"
   [locale]="locale"
   [excludeDays]="excludeDays"
+  (eventClicked)="handleEvent('Clicked', $event.event)"
+  (eventTimesChanged)="eventTimesChanged($event)"
+  [refresh]="refresh"
 >
 </mwl-calendar-month-view>
 
