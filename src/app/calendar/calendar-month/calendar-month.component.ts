@@ -15,6 +15,7 @@ import {
 import { CalendarEventAction, CalendarEventTimesChangedEvent } from 'angular-calendar';
 import { Subject } from 'rxjs';
 import { FirestoreService } from 'src/app/shared/firestore.service';
+import { Item } from 'src/app/wagi/waga-lista/waga-lista.component';
 
 export interface ICalendarEvent {
   id?: any;
@@ -40,10 +41,24 @@ export interface ICalendarEvent {
   draggable?: any;
   // meta?: MetaType;
   meta?: any;
+}export interface ICalendarEvent2 {
+  planowanyKoniec?: any;
+  created?: any;
+  id?: any;
+  start: any;
+  end?: any;
+  title: string;
+  color?: any;
+  actions?: any;
+  allDay?: any;
+  resizable?: any;
+  cssClass?: any;
+  draggable?: any;
+  meta?: any;
 }
 registerLocaleData(localePl);
 
-const colors: any = {
+let colors: any = {
   red: {
     primary: '#ad2121',
     secondary: '#FAE3E3'
@@ -72,7 +87,7 @@ export class CalendarMonthComponent implements OnInit {
   // events = [];
   locale: string;
   excludeDays: number[];
-
+  wagaData;
   actions: CalendarEventAction[] = [
     {
       label: '<i class="fa fa-fw fa-pencil"></i>',
@@ -170,32 +185,49 @@ export class CalendarMonthComponent implements OnInit {
   ngOnInit() {
     this.service.getCalendar().subscribe(data => {
       this.dataSub = data.map(item => {
-        const eventsT = {
+        let eventsT = {
           id: item.payload.doc.id,
           ...(item.payload.doc.data() as ICalendarEvent)
         };
-        const eventsTemp = [] as any;
-        const endT = new Date(eventsT.end.seconds * 1000);
-        const startT = new Date(eventsT.start.seconds * 1000);
+        let eventsTemp = [] as any;
+        let endT = new Date(eventsT.end.seconds * 1000);
+        let startT = new Date(eventsT.start.seconds * 1000);
         eventsTemp.push({ ...eventsT, start: startT, end: endT });
-        // console.log('eventsT.start: ', eventsT.start); console.log('eventsT.start.seconds: ', eventsT.start.seconds);
-        // console.log('eventsTemp: ', eventsTemp);
-        // let eventU = {
-        //   ...eventsT,
-        //   start: new Date(eventsT.start.seconds), end: new Date(eventsT.end.seconds),
-        // }
-        // console.log('eventU: ', eventU);
         this.events.push(...eventsTemp);
         this.refresh.next();
-        setTimeout(() => {
-          // console.log('aEvents: ', this.events);
-          // console.log('eventsT: ', eventsT);
-        }, 2000);
       });
 
     });
 
+    this.service.getCalendar2().subscribe(data => {
+      this.wagaData = data.map(item => {
+        let wagaTemp = {
+          id: item.payload.doc.id,
+          ...(item.payload.doc.data() as ICalendarEvent2)
+        };
+        let wagaDataT = [] as any;
+        let endT = new Date(wagaTemp.planowanyKoniec * 1000);
+        let startT = new Date(wagaTemp.created * 1000);
+
+        wagaDataT.push({
+          ...wagaTemp, start: startT, end: endT, title: 'id tyutul', color: colors.yellow,
+          actions: this.actions,
+          resizable: {
+            beforeStart: true,
+            afterEnd: true
+          },
+          draggable: true,
+          allDay: false
+        });
+        this.events.push(...wagaDataT);
+        this.refresh.next();
+      });
+    });
+    // console.log(' this.events3 ', this.events);
   }
+
+
+
 
   handleEvent(action: string, event: CalendarEvent): void {
     console.log('event id: ' + event.id);
@@ -222,7 +254,7 @@ export class CalendarMonthComponent implements OnInit {
     // console.log('event draggable: ' + event.draggable);
     // console.log('event resizable beforeStart: ' + event.resizable.beforeStart);
     // console.log('event resizable afterEnd: ' + event.resizable.afterEnd);
-    // const im = event.actions.map(a => {
+    // let im = event.actions.map(a => {
     //   console.log('id: ' + a.id);
     //   console.log('label: ' + a.label);
     //   console.log('cssClass: ' + a.cssClass);
@@ -238,27 +270,11 @@ export class CalendarMonthComponent implements OnInit {
   }: CalendarEventTimesChangedEvent): void {
     event.start = newStart;
     event.end = newEnd;
-    // this.handleEvent('Dropped or resized', event);
     console.log('Dropped or resized', event);
-    // console.log('event resizable beforeStart: ' + event.resizable.beforeStart);
-    // console.log('event resizable afterEnd: ' + event.resizable.afterEnd);
     this.refresh.next();
   }
 
 
-  // dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
-  //   if (isSameMonth(date, this.viewDate)) {
-  //     this.viewDate = date;
-  //     if (
-  //       (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) ||
-  //       events.length === 0
-  //     ) {
-  //       this.activeDayIsOpen = false;
-  //     } else {
-  //       this.activeDayIsOpen = true;
-  //     }
-  //   }
-  // }
 
 
   addEvent(): void {
@@ -273,6 +289,15 @@ export class CalendarMonthComponent implements OnInit {
         afterEnd: true
       }
     });
+    this.refresh.next();
+  }
+
+  addCalendar(): void {
+    let tempData = [];
+    tempData.push(this.service.addCalendar());
+    this.events.push(
+      ...tempData
+    );
     this.refresh.next();
   }
 
