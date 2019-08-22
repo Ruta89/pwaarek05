@@ -54,6 +54,59 @@ export class FirestoreService {
       )
       .snapshotChanges();
   }
+  getCalendar() {
+    return this.afs
+      .collection('calendar')
+      .snapshotChanges();
+  }
+  getCalendar2() {
+    return this.afs
+      .collection('zleceniaTest', ref =>
+        ref.where('archive', '==', false).orderBy('created', 'desc')
+      )
+      .snapshotChanges();
+  }
+  addCalendar() {
+    let data = {
+      'id': 'HNAvSxGsJdEb72CMx1Xh',
+      'archive': false,
+      'created': 1564172369619,
+      'czas': 1,
+      'edit': true,
+      'l1': 5,
+      'licznik': 120,
+      'partia': 1,
+      'planowanyKoniec': 1564172429619,
+      'szpule': 6,
+      'szt': 10,
+      'waga': 10.692,
+      'wll': 10,
+      'start': 'Fri Jul 26 2019 22:19:29 GMT+0200 (czas środkowoeuropejski letni)',
+      'end': 'Fri Jul 26 2019 22:20:29 GMT+0200 (czas środkowoeuropejski letni)',
+      'title': 'titlwe',
+      'color': {
+        'primary': '#e3bc08',
+        'secondary': '#FDF1BA'
+      },
+      'actions': [
+        {
+          'label': '<i class="fa fa-fw fa-pencil"></i>'
+        },
+        {
+          'label': '<i class="fa fa-fw fa-times"></i>'
+        }
+      ],
+      'resizable': {
+        'beforeStart': true,
+        'afterEnd': true
+      },
+      'draggable': true,
+      'allDay': false
+    };
+
+    return this.afs.collection('calendar').add(data);
+  }
+
   getPartie() {
     this.afs
       .collection('zleceniaTest', ref =>
@@ -167,7 +220,7 @@ export class FirestoreService {
     //  this.uploadsCollection.add({ 'url': url });
   }
   archiveS(item: Item) {
-    console.log('s archive: ', item); 
+    console.log('s archive: ', item);
     const archiveData = { archive: true, archiveDate: new Date() };
     this.afs.doc(`zleceniaTest/${item.id}`).update(archiveData);
   }

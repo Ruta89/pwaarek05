@@ -54,6 +54,9 @@ import { CzasComponent } from './czas/czas.component';
 import { NaddatkiComponent } from './naddatki/naddatki.component';
 import { UploadComponent } from './upload/upload.component';
 import { WagaDetailComponent } from './wagi/waga-detail/waga-detail.component';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { CalendarMonthComponent } from './calendar/calendar-month/calendar-month.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +74,8 @@ import { WagaDetailComponent } from './wagi/waga-detail/waga-detail.component';
     CzasComponent,
     NaddatkiComponent,
     UploadComponent,
-    WagaDetailComponent
+    WagaDetailComponent,
+    CalendarMonthComponent
   ],
   imports: [
     BrowserModule,
@@ -116,9 +120,13 @@ import { WagaDetailComponent } from './wagi/waga-detail/waga-detail.component';
     AngularFirestoreModule.enablePersistence(), // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
     AngularFireStorageModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory
+    })
   ],
   providers: [{ provide: StorageBucket, useValue: 'pwaarek.appspot.com' }],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
