@@ -1,0 +1,104 @@
+<div *ngIf="list">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Zlecenie </mat-card-title>
+      <mat-card-subtitle *ngIf="!list.auf">Dodaj auftrag</mat-card-subtitle>
+      <mat-card-subtitle *ngIf="list.auf">Zmień auftrag</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div>
+        <mat-form-field>
+          <input matInput placeholder="auf" name="auf" [(ngModel)]="list.auf" />
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="addAuf(list.id, list.auf)"
+      >
+        Zapisz
+      </button>
+    </mat-card-actions>
+  </mat-card>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title *ngIf="!list.czas">Dodaj czas </mat-card-title>
+      <mat-card-title *ngIf="list.czas">Zmień czas</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="czas"
+          name="czas"
+          [(ngModel)]="list.czas"
+        />
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="addCzas(list.id, list.czas)"
+      >
+        Zapisz
+      </button>
+    </mat-card-actions>
+  </mat-card>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Przędza </mat-card-title>
+      <mat-card-subtitle *ngIf="!list.partia">Nici</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div>
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="nici"
+            name="partia"
+            [(ngModel)]="list.partia"
+          />
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="addPartia(list.id, list.partia)"
+      >
+        Zapisz
+      </button>
+    </mat-card-actions>
+  </mat-card>
+  <mat-card>
+    <p>
+      <small>
+        Dodano: {{ list.created | date: ' HH:mm   dd.MM.yy' }} <br />
+        Koniec {{ list.planowanyKoniec | date: ' HH:mm   dd.MM.yy' }}<br />
+        id: {{ list.id }}<br />
+        auf:
+        {{ list.auf }}<br />
+        czas: {{ list.czas }} <br />
+        szt {{ list.szt }} <br />
+        licznik {{ list.licznik }} <br />
+        partia {{ list.partia }} <br />
+        waga {{ list.waga }} <br />
+        szpule {{ list.szpule }} <br />
+        archive {{ list.archive }} <br />
+        edit {{ list.archive }} <br />
+      </small>
+      <span *ngIf="list.archiveDate"> </span>
+
+      <small>archiveDate: {{ list.archiveDate }} </small>
+    </p>
+    <mat-card-actions>
+      <button mat-raised-button color="accent" (click)="close()">
+        Zamknij
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

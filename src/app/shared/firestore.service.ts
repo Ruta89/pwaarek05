@@ -20,14 +20,14 @@ export class FirestoreService {
   itemDoc: AngularFirestoreDocument<Item>;
   list: Item[];
   formData: Item;
-
+  partieAr = [];
   czasCollection: AngularFirestoreCollection<any>;
   // uploadsCollection: AngularFirestoreCollection<any>;
   // uploads: Observable<any[]>;
 
   constructor(private afs: AngularFirestore, private wService: WagaService) {
     this.itemsCollection = this.afs.collection('zleceniaTest', ref =>
-      ref.orderBy('created', 'asc')
+      ref.where('archive', '==', false).orderBy('created', 'desc')
     );
 
     this.itemsCollection.snapshotChanges().subscribe(actionArray => {
@@ -49,8 +49,28 @@ export class FirestoreService {
 
   getItems() {
     return this.afs
-      .collection('zleceniaTest', ref => ref.orderBy('created', 'desc'))
+      .collection('zleceniaTest', ref =>
+        ref.where('archive', '==', false).orderBy('created', 'desc')
+      )
       .snapshotChanges();
+  }
+  getPartie() {
+    this.afs
+      .collection('zleceniaTest', ref =>
+        ref.where('archive', '==', false).orderBy('created', 'desc')
+      )
+      .snapshotChanges().subscribe(data => {
+        this.list = data.map(item => {
+          return {
+            id: item.payload.doc.id,
+            ...(item.payload.doc.data() as Item)
+          };
+        });
+        this.list.map(d => {
+          this.partieAr.push(d.partia.valueOf());
+        });
+        return this.partieAr;
+      });
   }
   getPliki() {
     return this.afs.collection('pliki').snapshotChanges();
@@ -78,6 +98,7 @@ export class FirestoreService {
       szpule: szpul,
       licznik: licznikM,
       waga: wagaSzt,
+      archive: false,
       ...item
     };
 
@@ -107,17 +128,47 @@ export class FirestoreService {
     this.afs.doc(`zleceniaTest/${item.id}`).update(item);
     this.wService.reset();
   }
+  updateAuf(id, auf) {
+    console.log('servis auf: ' + auf);
+    const itemAuf = { auf: auf };
+    // let itemT = item.edit['true'];
+    return this.afs.doc(`zleceniaTest/${id}`).update(itemAuf);
+  }
+
+  updatePartia(id, partia) {
+    console.log('servis partia: ' + partia);
+    const itemPartia = { partia: partia };
+    return this.afs.doc(`zleceniaTest/${id}`).update(itemPartia);
+  }
+  updateCzas(id, czas) {
+    console.log('servis czAs: ' + czas);
+    const itemCzas = { czas: czas };
+    return this.afs.doc(`zleceniaTest/${id}`).update(itemCzas);
+  }
 
   sumaCzasu() {
-    return this.afs.collection<Razem>('zleceniaTest').snapshotChanges();
+    return this.afs
+      .collection<Razem>('zleceniaTest', ref =>
+        ref.where('archive', '==', false).orderBy('created', 'desc')
+      )
+      .snapshotChanges();
   }
   sumaWagi() {
-    return this.afs.collection<RazemWaga>('zleceniaTest').snapshotChanges();
+    return this.afs
+      .collection<RazemWaga>('zleceniaTest', ref =>
+        ref.where('archive', '==', false).orderBy('created', 'desc')
+      )
+      .snapshotChanges();
   }
   uploadURL(url) {
     console.log('url service: ', url);
     console.log('url service: ', ...url);
 
     //  this.uploadsCollection.add({ 'url': url });
+  }
+  archiveS(item: Item) {
+    console.log('s archive: ', item); 
+    const archiveData = { archive: true, archiveDate: new Date() };
+    this.afs.doc(`zleceniaTest/${item.id}`).update(archiveData);
   }
 }

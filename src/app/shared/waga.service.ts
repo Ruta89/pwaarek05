@@ -9,7 +9,7 @@ import { interval } from 'rxjs';
 })
 export class WagaService {
   waga;
-  constructor() {}
+  constructor() { }
 
   form: FormGroup = new FormGroup({
     id: new FormControl(null),
@@ -91,6 +91,9 @@ export class WagaService {
       case 80:
         return 12;
         break;
+      case 90:
+        return 12;
+        break;
       case 200:
         return 12;
         break;
@@ -114,10 +117,22 @@ export class WagaService {
     if (wll === 1.5) {
       licznikMetr = 17;
     }
-    if (wll <= 4) {
+    if (wll === 2) {
       licznikMetr = 22;
     }
-    if (wll > 4 && wll < 10) {
+    if (wll === 3) {
+      licznikMetr = 22;
+    }
+    if (wll === 4) {
+      licznikMetr = 22;
+    }
+    if (wll === 5) {
+      licznikMetr = 20;
+    }
+    if (wll === 6) {
+      licznikMetr = 20;
+    }
+    if (wll === 8) {
       licznikMetr = 20;
     }
     if (wll === 10) {
@@ -153,6 +168,9 @@ export class WagaService {
     if (wll === 80) {
       licznikMetr = 100;
     }
+    if (wll === 90) {
+      licznikMetr = 114;
+    }
     if (wll === 100) {
       licznikMetr = 126;
     }
@@ -162,7 +180,7 @@ export class WagaService {
     if (wll === 300) {
       licznikMetr = 384;
     }
-    console.log('licznik: ' + licznikMetr * l1 + ', 1m: ' + licznikMetr);
+    // console.log('licznik: ' + licznikMetr * l1 + ', 1m: ' + licznikMetr);
     return licznikMetr * l1;
   }
   ustawWage(wll, dl) {
@@ -173,21 +191,21 @@ export class WagaService {
     if (wll < 4) {
       console.log(
         'nawinieto [66.000] ' +
-          nawinieto +
-          ' metrów, zuzyto: ' +
-          zuzyto +
-          ' metrów o wadze: ' +
-          zuzyto * 0.0066
+        nawinieto +
+        ' metrów, zuzyto: ' +
+        zuzyto +
+        ' metrów o wadze: ' +
+        zuzyto * 0.0066
       );
       return zuzyto * 0.0066;
     } else if (wll > 3) {
       console.log(
         'nawinieto [132.000] ' +
-          nawinieto +
-          ' metrów, zuzyto: ' +
-          zuzyto +
-          ' metrów o wadze: ' +
-          zuzyto * 0.0132
+        nawinieto +
+        ' metrów, zuzyto: ' +
+        zuzyto +
+        ' metrów o wadze: ' +
+        zuzyto * 0.0132
       );
       return zuzyto * 0.0132;
     } else {
@@ -382,7 +400,7 @@ export class WagaService {
   czasSztuki(czas, szt) {
     const czasWms = czas * 60000;
     let i = 0;
-    const time = setInterval(function() {
+    const time = setInterval(function () {
       i++;
       console.log('teoretycznie powinnienes juz miec zrobione ' + i);
     }, czasWms);

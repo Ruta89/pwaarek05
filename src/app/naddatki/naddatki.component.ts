@@ -26,7 +26,7 @@ export class NaddatkiComponent implements OnInit {
   });
 
   hasUnitNumber = false;
-
+  visable: boolean;
   maszyny = [
     { name: 'Tadek', abbreviation: 'tadek' },
     { name: 'Długa', abbreviation: 'dluga' },
@@ -56,5 +56,16 @@ export class NaddatkiComponent implements OnInit {
     alert('Dzieki!');
     console.log(this.naddatkiForm.value);
     this.naddatkiService.dodajNaddatek(this.naddatkiForm.value);
+  }
+  delete() {
+    return alert('usuwam');
+  }
+  hide(data) {
+    return alert('archiwizuje');
+    console.log(data);
+    this.visable = false;
+  }
+  dodano() {
+    return alert('dodano: data...');
   }
 }

@@ -8,7 +8,7 @@ import { SwUpdate } from '@angular/service-worker';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'pwaarek06';
+  title = 'pwaarek07';
   constructor(private swUpdate: SwUpdate) {}
   ngOnInit() {
     if (this.swUpdate.isEnabled) {

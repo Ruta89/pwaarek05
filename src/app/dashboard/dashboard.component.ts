@@ -17,14 +17,38 @@ export class DashboardComponent {
     map(({ matches }) => {
       if (matches) {
         return [
-          { title: 'Stan', description: 'Stan 450 minut ', cols: 1, rows: 1 },
-          { title: 'Dodaj', description: 'asddasdasdsadsadsa', cols: 1, rows: 1 }
+          {
+            title: 'Stan 1',
+            description:
+              'Stan 450 minut, Stan 1 Stan 450 minut, Stan 1 Stan 450 minut, Stan 1 Stan 450 minut, Stan 1 ',
+            cols: 1,
+            rows: 1
+          },
+          {
+            title: 'Dodaj 1',
+            description:
+              'Dodaj 1 Dodaj 1 Dodaj 1 Dodaj 1 Dodaj 1 Dodaj 1 Dodaj 1 Dodaj 1 Dodaj 1 Dodaj 1 ',
+            cols: 1,
+            rows: 1
+          }
         ];
       }
 
       return [
-        { title: 'Stan', description: 'Stan 450 minut ', cols: 2, rows: 1 },
-        { title: 'Dodaj', description: 'asddasdasdsadsadsa', cols: 1, rows: 1 }
+        {
+          title: 'Stan 2',
+          description:
+            'Stan 450 minut, Stan 2 Stan 450 minut Stan 450 minut, Stan 2 Stan 450 minut Stan 450 minut, Stan 2 Stan 450 minut ',
+          cols: 2,
+          rows: 1
+        },
+        {
+          title: 'Dodaj 2 ',
+          description:
+            'asddasdasdsa Dodaj 2 Dodaj 2 Dodaj 2 Dodaj 2 Dodaj 2 Dodaj 2 Dodaj 2 Dodaj 2 Dodaj 2 Dodaj 2 dsadsa',
+          cols: 1,
+          rows: 1
+        }
       ];
     })
   );
@@ -32,29 +56,18 @@ export class DashboardComponent {
   constructor(
     private breakpointObserver: BreakpointObserver,
     private fb: FormBuilder
-  ) {
-    // this.fetchData();
-  }
-  // fetchData() {
-  //   this.apiService.fetch().subscribe(
-  //     (data: Array<Item>) => {
-  //       console.log(data);
-  //       this.items = data;
-  //     },
-  //     err => {
-  //       console.log(err);
-  //     }
-  //   );
-  // }
+  ) { }
   addForm = this.fb.group({
-    wll: null,
+    wll: [null, Validators.required],
     dlugosc: [null, Validators.required],
     szt: [null, Validators.required],
-    czas: null
+    czas: [null, Validators.required],
   });
 
-
   onSubmit() {
-    alert('Dzieki!');
+    const message = `Dzięki, dodałeś ${this.addForm.value.wll}T,  ${this.addForm.value.dlugosc}m, ${this.addForm.value.czas}min,  ${this.addForm.value.szt}szt.`;
+    console.log(message);
+    alert(message);
+
   }
 }

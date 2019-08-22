@@ -43,6 +43,10 @@ export class CzasComponent implements OnInit {
         return a + b;
       }, 0);
       console.log(this.sumaCzas);
+      this.czasService.snackBar(
+        'Suma czasu: ' + this.sumaCzas + ' min. ',
+        'OK'
+      );
     });
   }
 

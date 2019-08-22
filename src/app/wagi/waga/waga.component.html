@@ -1,59 +1,68 @@
-<mat-grid-list cols="2" rowHeight="360px">
+<mat-grid-list cols="2" rowHeight="500px" *ngIf="add$">
   <mat-grid-tile>
-    <form [formGroup]="service.form">
-      <div class="container-form">
-        <mat-form-field>
-          <mat-label>WLL </mat-label>
-          <input matInput formControlName="wll" type="number" />
-          <mat-error>Wpisz tonaż!</mat-error>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>L1 </mat-label>
-          <input matInput formControlName="l1" type="number" />
-          <mat-error>Wpisz długość!</mat-error>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>czas </mat-label>
-          <input matInput formControlName="czas" type="number" />
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>szt </mat-label>
-          <input matInput formControlName="szt" type="number" />
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Partia </mat-label>
-          <input matInput formControlName="partia" type="number" />
-          <mat-error>Wpisz nici!</mat-error>
-        </mat-form-field>
-        <input formControlName="edit" type="hidden" />
-        <div class="btn">
-          <div *ngIf="service.form.value.edit === false">
-            <button
-              mat-raised-button
-              [disabled]="!service.form.valid"
-              (click)="saveForm(service.form.value)"
-              color="primary"
-            >
-              Wyślij
-            </button>
-          </div>
-          <div *ngIf="service.form.value.edit === true">
-            <button
-              mat-raised-button
-              [disabled]="!service.form.valid"
-              (click)="update(service.form.value)"
-              color="primary"
-            >
-              Modyfikuj
-            </button>
-          </div>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Dodaj</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <form [formGroup]="service.form">
+          <div class="container-form">
+            <mat-form-field>
+              <label>WLL </label>
+              <input matInput formControlName="wll" type="number" />
+              <mat-error>Wpisz tonaż!</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <label>L1 </label>
+              <input matInput formControlName="l1" type="number" />
+              <mat-error>Wpisz długość!</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <label>Czas </label>
+              <input matInput formControlName="czas" type="number" />
+              <mat-error>Wpisz czas!</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <label>Sztuk </label>
+              <input matInput formControlName="szt" type="number" />
+              <mat-error>Wpisz ilosc!</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <label>Partia </label>
+              <input matInput formControlName="partia" type="number" />
+              <mat-error>Wpisz nici!</mat-error>
+            </mat-form-field>
+            <input formControlName="edit" type="hidden" />
+            <div class="btn">
+              <div *ngIf="service.form.value.edit == false">
+                <button
+                  mat-raised-button
+                  [disabled]="!service.form.valid"
+                  (click)="saveForm(service.form.value)"
+                  color="primary"
+                >
+                  Wyślij
+                </button>
+              </div>
+              <div *ngIf="service.form.value.edit == true">
+                <button
+                  mat-raised-button
+                  [disabled]="!service.form.valid"
+                  (click)="update(service.form.value)"
+                  color="primary"
+                >
+                  Modyfikuj
+                </button>
+              </div>
 
-          <button mat-raised-button (click)="reset()">
-            Anuluj
-          </button>
-        </div>
-      </div>
-    </form>
+              <button mat-raised-button (click)="reset()">
+                Anuluj
+              </button>
+            </div>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
   </mat-grid-tile>
   <mat-grid-tile class="wynikiStyl">
     <div *ngIf="value">
@@ -69,3 +78,8 @@
     </div>
   </mat-grid-tile>
 </mat-grid-list>
+<mat-card *ngIf="!add$">
+  <button mat-raised-button color="primary" (click)="show()">
+    Dodaj
+  </button></mat-card
+>

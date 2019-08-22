@@ -1,13 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
 
 import {
   AngularFirestore,
   AngularFirestoreDocument,
   AngularFirestoreCollection
 } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
-import { FirestoreService } from 'src/app/shared/firestore.service';
-import { WagaService } from 'src/app/shared/waga.service';
+import {
+  Observable
+} from 'rxjs';
+import {
+  FirestoreService
+} from 'src/app/shared/firestore.service';
+import {
+  WagaService
+} from 'src/app/shared/waga.service';
+import {
+  CzasService
+} from 'src/app/czas.service';
 
 export interface Item {
   id: string;
@@ -22,6 +34,9 @@ export interface Item {
   edit?: boolean;
   created?: number;
   planowanyKoniec?: number;
+  archive?: boolean;
+  archiveDate?: Date;
+  auf?: number;
 }
 
 @Component({
@@ -41,10 +56,13 @@ export class WagaListaComponent implements OnInit {
   rwag;
   sumaWag;
   math: Math;
+  selectedItem: Item;
+  partieAr = [];
   constructor(
     private afs: AngularFirestore,
     private firestoreService: FirestoreService,
-    private serviceWaga: WagaService
+    private serviceWaga: WagaService,
+    private czasService: CzasService
   ) {
     this.math = Math;
   }
@@ -57,19 +75,22 @@ export class WagaListaComponent implements OnInit {
           ...(item.payload.doc.data() as Item)
         };
       });
+      this.list.map(d => {
+        this.partieAr.push(d.partia.valueOf() + ' ');
+      });
     });
 
     this.zmiana = this.serviceWaga.jakaZmiana();
-    // alert(this.zmiana.zmiana + ', - pozostalo ' + this.zmiana.doKonca + ' do konca');
-    // this.serviceWaga.WyrobionyCzasFn();
 
     this.razemSuma();
     this.razemSumaWagi();
   }
+  getPartie() {
+    this.czasService.snackBar('ostatnie partie:  ' + this.partieAr.toString(), 'X');
+    console.log('ostatnie partie:  ', this.partieAr.toString());
+  }
 
   update(item: Item) {
-    // console.log('update: ', item);
-    // this.firestoreService.updateItem(item);
     this.serviceWaga.form.setValue({
       id: item.id,
       wll: item.wll,
@@ -79,13 +100,15 @@ export class WagaListaComponent implements OnInit {
       partia: item.partia,
       edit: true
     });
+    this.czasService.snackBar('aktualizuje...', 'x');
   }
   addItem(item: Item) {
-    // console.log('addItem: ', item);
     this.firestoreService.addItem(item);
+    this.czasService.snackBar('dodaje...', 'x');
   }
   delete(item: Item) {
     this.firestoreService.deleteItem(item);
+    this.czasService.snackBar('usuwam...', 'x');
   }
 
   razemSuma() {
@@ -93,12 +116,9 @@ export class WagaListaComponent implements OnInit {
       this.razem = data.map(ea => {
         return ea.payload.doc.data()['czas'] * ea.payload.doc.data()['szt'];
       });
-      // console.log('razem: ');
-      // console.log(this.razem);
       this.sumaOblicz = this.razem.reduce((a, b) => {
         return a + b;
       }, 0);
-      // console.log(this.sumaOblicz);
     });
   }
   razemSumaWagi() {
@@ -106,12 +126,18 @@ export class WagaListaComponent implements OnInit {
       this.rwag = data.map(ea => {
         return ea.payload.doc.data()['waga'] * ea.payload.doc.data()['szt'];
       });
-      // console.log('waga razem: ');
-      // console.log(this.rwag);
       this.sumaWag = this.rwag.reduce((a, b) => {
         return a + b;
       }, 0);
-      // console.log(this.sumaWag);
     });
+  }
+  archive(item: Item) {
+    this.czasService.snackBar('Archiwizuje', 'X');
+    return this.firestoreService.archiveS(item);
+  }
+  onSelect(item: Item): void {
+    this.selectedItem = item;
+
+    this.czasService.snackBar('Wybrałeś: ' + item.id, 'X');
   }
 }

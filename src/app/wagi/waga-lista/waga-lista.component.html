@@ -14,14 +14,25 @@
     Do konca {{ zmiana.doKonca }}.
     <span *ngIf="zmiana.przerwaI"> przerwa I: {{ zmiana.przerwaI }} </span
     ><span *ngIf="zmiana.przerwaII"> przerwa II: {{ zmiana.przerwaII }} </span>
+    <br /><span *ngIf="partieAr"
+      >ostatnie partie: {{ partieAr.toString() }}
+    </span>
   </mat-card-content>
 </mat-card>
-<mat-grid-list cols="2" rowHeight="450px" *ngFor="let list of list">
+
+<app-waga-detail [list]="selectedItem"></app-waga-detail>
+
+<mat-grid-list cols="2" rowHeight="500px" *ngFor="let list of list">
   <mat-grid-tile>
-    <div class="container">
+    <div
+      class="container"
+      [class.selected]="list === selectedItem"
+      (click)="onSelect(list)"
+    >
       <img src="assets/{{ list.wll }}.jpg" alt="wll Img: {{ list.wll }}" />
     </div>
   </mat-grid-tile>
+
   <mat-grid-tile>
     <div class="container2">
       <p>wll: {{ list.wll }}</p>
@@ -38,15 +49,23 @@
       <p>
         waga: {{ list.waga * list.szt | number }}, ({{ list.waga | number }}kg)
       </p>
-      <p>wym: {{ (list.licznik + (list.l1 * 2 + 5)) * list.szt  | number}}/m szpuli</p>
+      <p>
+        wym: {{ (list.licznik + (list.l1 * 2 + 5)) * list.szt | number }}/m
+        szpuli
+      </p>
       <!-- <p> dodany: {{list.created | date:'dd-MM HH:mm'  }} </p> -->
       <p>plan. kon.: {{ list.planowanyKoniec | date: 'HH:mm' }}</p>
       <div class="btn">
         <button mat-raised-button color="primary" (click)="update(list)">
           Edytuj
         </button>
+
         <button mat-raised-button color="danger" (click)="delete(list)">
           Usun
+        </button>
+
+        <button mat-raised-button color="accent" (click)="archive(list)">
+          Archiwizuj
         </button>
       </div>
       <hr />

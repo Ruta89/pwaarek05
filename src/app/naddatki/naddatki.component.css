@@ -1,28 +1,39 @@
 .full-width {
-    width: 100%;
-  }
-  
-  .naddatki-card {
-    min-width: 120px;
-    margin: 20px auto;
-  }
-  
-  .mat-radio-button {
-    display: block;
-    margin: 5px 0;
-  }
-  
-  .row {
-    display: flex;
-    flex-direction: row;
-  }
-  
-  .col {
-    flex: 1;
-    margin-right: 20px;
-  }
-  
-  .col:last-child {
-    margin-right: 0;
-  }
-  
+  width: 100%;
+}
+
+.naddatki-card {
+  min-width: 120px;
+  margin: 20px auto;
+}
+
+.mat-radio-button {
+  display: block;
+  margin: 5px 0;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.col {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.col:last-child {
+  margin-right: 0;
+}
+.lista {
+  display: flex;
+  flex-flow: row wrap;
+}
+.mat-list-item {
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  /* width: 350px; */
+  margin: 20px 20px 0 0;
+}
+p {
+  /* width: 100%; */
+}
