@@ -1,3 +1,3 @@
 # pwaarek05
 
-## wrzesien
+## październik
