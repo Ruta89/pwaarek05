@@ -568,16 +568,24 @@ jak np. czarny nadruk określający limit nośności prostej oraz czarne treski 
 
     if (tonaz === 4) {
       if (dlugosc === 1) {
-        agent.add(` ${tonaz} tony ${dlugosc} metry metr spiąć jeden raz, pakować po 5 sztuk wiązkę też spiąć raz`);
+        agent.add(` ${tonaz} tony ${dlugosc} metr  spiąć jeden raz, pakować po 5 sztuk wiązkę też spiąć raz`);
+      } if (dlugosc === 1.5) {
+        agent.add(` ${tonaz} tony ${dlugosc} metra  spiąć jeden raz, pakować po 5 sztuk wiązkę też spiąć raz`);
       }
       if (dlugosc === 2) {
-        agent.add(`${tonaz} tony ${dlugosc} metry metry spiąć dwa raz, pakować po 5 sztuk wiązkę spiąć raz`);
+        agent.add(`${tonaz} tony ${dlugosc} metry  spiąć jeden raz, pakować po 5 sztuk wiązkę spiąć raz`);
       }
+      if (dlugosc === 2.5) {
+        agent.add(`${tonaz} tony ${dlugosc} metra  spiąć dwa raz, pakować po 5 sztuk wiązkę spiąć raz`);
+      }
+      if (dlugosc === 3) {
+        agent.add(`${tonaz} tony ${dlugosc}  metry spiąć dwa razy, pakuj po 5 sztuk i wiązkę zepnij taśmą dwa razy.  `);
+      }  
       if (dlugosc === 4) {
         agent.add(`${tonaz} tony ${dlugosc}  metry spiąć dwa razy, pakuj po 5 sztuk i wiązkę zepnij taśmą dwa razy.  `);
       }
       if (dlugosc >= 5) {
-        agent.add(` ${tonaz} tony ${dlugosc} metry metrów spiąć dwa razy pakować osobno.`);
+        agent.add(` ${tonaz} tony ${dlugosc} metra   spiąć dwa razy pakować osobno.`);
       }
     } // 4 tony
   }

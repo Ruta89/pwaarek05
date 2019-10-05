@@ -10,7 +10,7 @@ export class State {
     public artykul: string,
     public tonaz: number,
     public rodzaj: string
-  ) {}
+  ) { }
 }
 
 @Component({
