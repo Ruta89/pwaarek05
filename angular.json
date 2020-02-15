@@ -147,6 +147,7 @@
   },
   "defaultProject": "pwaarek",
   "cli": {
-    "packageManager": "yarn"
+    "packageManager": "yarn",
+    "analytics": "0f9d77c7-85f9-42fd-9799-26903d5c3015"
   }
 }
