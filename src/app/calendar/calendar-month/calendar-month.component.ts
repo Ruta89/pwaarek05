@@ -74,6 +74,13 @@ let colors: any = {
   green: {
     primary: '#1ea825',
     secondary: '#96ff9c'
+  }, brown: {
+    primary: '#402600',
+    secondary: '#402600'
+  },
+  purple: {
+    primary: '#ff78a3',
+    secondary: '#ff78a3'
   },
 };
 
@@ -128,11 +135,12 @@ export class CalendarMonthComponent implements OnInit {
       id: '2_id'
     },
     {
-      title: '1989 idblueArek',
-      start: new Date(1563956498032),
-      end: new Date(1563966890208),
-      color: colors.green,
+      title: '1989 Purple Arek',
+      start: new Date(Date.now() + 604800000),
+      end: new Date(Date.now() + 604800000 + 50000),
+      color: colors.purple,
       actions: this.actions,
+      allDay: false,
       id: '3_id'
     },
     {
@@ -157,10 +165,10 @@ export class CalendarMonthComponent implements OnInit {
       id: '5_id'
     },
     {
-      title: '2 1989 idblueArek',
-      start: new Date(1563946498032),
-      end: new Date(1563956890208),
-      color: colors.green,
+      title: 'braz',
+      start: new Date(Date.now() + 259200000),
+      end: new Date(Date.now() + 259800000 * 2.5),
+      color: colors.brown,
       actions: this.actions,
       id: '6_id',
       resizable: {
@@ -168,7 +176,7 @@ export class CalendarMonthComponent implements OnInit {
         afterEnd: true
       },
       draggable: true,
-      allDay: true
+      allDay: false
     },
   ];
 
@@ -179,6 +187,8 @@ export class CalendarMonthComponent implements OnInit {
   ) {
     this.locale = 'pl-PL';
     this.excludeDays = [0, 6];
+
+    console.log('dateNow', Date.now());
 
   }
 
@@ -223,7 +233,11 @@ export class CalendarMonthComponent implements OnInit {
         this.refresh.next();
       });
     });
-    // console.log(' this.events3 ', this.events);
+    console.log(' startOfDay(new Date()) , ', startOfDay(new Date()));
+
+    console.log('    new Date() ', new Date());
+
+    console.log('  new Date(Date.now() +  259200000),', new Date(Date.now() + 259200000));
   }
 
 
@@ -278,10 +292,14 @@ export class CalendarMonthComponent implements OnInit {
 
 
   addEvent(): void {
+    console.log(new Date(1582023038947));
+    console.log(new Date(1582023038947 + 400000));
+    let now = Date.now();
+
     this.events.push({
       title: 'Dodaj wydarzenie',
-      start: startOfDay(1563568422526),
-      end: endOfDay(1563568522526),
+      start: startOfDay(now),
+      end: endOfDay(now + 400000),
       color: colors.green,
       draggable: true,
       resizable: {
@@ -293,12 +311,16 @@ export class CalendarMonthComponent implements OnInit {
   }
 
   addCalendar(): void {
-    let tempData = [];
-    tempData.push(this.service.addCalendar());
-    this.events.push(
-      ...tempData
-    );
-    this.refresh.next();
+    // let tempData = [];
+    // tempData.push(this.service.addCalendar());
+    // this.events.push(
+    //   ...tempData
+    // );
+
+    // this.refresh = new Subject();
+    this.service.addCalendar();
+
+    // this.refresh.next();
   }
 
 }

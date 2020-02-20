@@ -68,25 +68,25 @@ export class FirestoreService {
   }
   addCalendar() {
     let data = {
-      'id': 'HNAvSxGsJdEb72CMx1Xh',
+      'id': Date.now() + 'arek' + new Date().getSeconds() + 's',
       'archive': false,
-      'created': 1564172369619,
+      'created': new Date(Date.now()),
       'czas': 1,
       'edit': true,
       'l1': 5,
       'licznik': 120,
       'partia': 1,
-      'planowanyKoniec': 1564172429619,
+      'planowanyKoniec': new Date(Date.now() + 4619),
       'szpule': 6,
       'szt': 10,
       'waga': 10.692,
       'wll': 10,
-      'start': 'Fri Jul 26 2019 22:19:29 GMT+0200 (czas środkowoeuropejski letni)',
-      'end': 'Fri Jul 26 2019 22:20:29 GMT+0200 (czas środkowoeuropejski letni)',
-      'title': 'titlwe',
+      'start': new Date,
+      'end': new Date(Date.now() + 4619),
+      'title': 'z serwisu' + 'arek' + new Date().getMinutes() + 'm' + new Date().getSeconds() + 's',
       'color': {
-        'primary': '#e3bc08',
-        'secondary': '#FDF1BA'
+        'primary': 'gray',
+        'secondary': 'gray'
       },
       'actions': [
         {

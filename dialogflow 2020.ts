@@ -258,8 +258,8 @@ jak np. czarny nadruk określający limit nośności prostej oraz czarne treski 
     if (agent.parameters.tonaz === 10) {
       const convertedTemp = 60;
       agent.add(`${tonaz} ton ma    ${convertedTemp} centymetrów zakładki.  `);
-    } 
-    if (agent.parameters.tonaz > 10)  {
+    }
+    if (agent.parameters.tonaz > 10) {
       const convertedTemp = 100;
       agent.add(`${tonaz} ton ma    ${convertedTemp} centymetrów zakładki.  `);
     }
@@ -506,7 +506,7 @@ jak np. czarny nadruk określający limit nośności prostej oraz czarne treski 
       }
     }
 
-    if (tonaz === 1) {  
+    if (tonaz === 1) {
       if (dlugosc <= 1) {
         agent.add(` ${tonaz} tona ${dlugosc} metry  spiąć raz banderolą,   pakuj w wiązki po 10 sztuk i dwa razy zepnij taśmą. `);
       }
@@ -519,9 +519,9 @@ jak np. czarny nadruk określający limit nośności prostej oraz czarne treski 
       }
       if (dlugosc >= 2.5) {
         agent.add(` ${tonaz} tony ${dlugosc} metry  taśmą raz zepnij, pakuj po 5 sztuk i  wiązkę  raz   taśmą. `);
-      } 
+      }
     } // 1 tona
-  
+
     if (tonaz === 2) {
       if (dlugosc <= 1) {
         agent.add(` ${tonaz} tony ${dlugosc} metry  banderola jeden raz, pakuj  po 10 sztuk i wiązkę 2 razy  spinaj.`);
@@ -575,95 +575,97 @@ jak np. czarny nadruk określający limit nośności prostej oraz czarne treski 
       } if (dlugosc >= 2.5 && dlugosc < 4) {
         agent.add(` ${tonaz} tony ${dlugosc} metra  spiąć jeden raz, pakować po 5 sztuk wiązkę zepnij dwa razy.`);
       }
-      if (dlugosc === 4  ) {
+      if (dlugosc === 4) {
         agent.add(`${tonaz} tony ${dlugosc} metry spiąć dwa razy, wiązkę 5 sztuk spiąć również dwa razy`);
       }
-      if (dlugosc > 4  ) {
+      if (dlugosc > 4) {
         agent.add(`${tonaz} tony ${dlugosc} metry  spiąć dwa razy, pakować  osobno.`);
       }
-    //   if (dlugosc === 2.5) {
-    //     agent.add(`${tonaz} tony ${dlugosc} metra  spiąć dwa raz, pakować po 5 sztuk wiązkę spiąć raz`);
-    //   }
-    //   if (dlugosc === 3) {
-    //     agent.add(`${tonaz} tony ${dlugosc}  metry spiąć dwa razy, pakuj po 5 sztuk i wiązkę zepnij taśmą dwa razy.  `);
-    //   }  
-    //   if (dlugosc === 4) {
-    //     agent.add(`${tonaz} tony ${dlugosc}  metry spiąć dwa razy, pakuj po 5 sztuk i wiązkę zepnij taśmą dwa razy.  `);
-    //   }
-    //   if (dlugosc >  4) {
-    //     agent.add(` ${tonaz} tony ${dlugosc} metra   spiąć dwa razy pakować osobno.`);
-    //   }
+      //   if (dlugosc === 2.5) {
+      //     agent.add(`${tonaz} tony ${dlugosc} metra  spiąć dwa raz, pakować po 5 sztuk wiązkę spiąć raz`);
+      //   }
+      //   if (dlugosc === 3) {
+      //     agent.add(`${tonaz} tony ${dlugosc}  metry spiąć dwa razy, pakuj po 5 sztuk i wiązkę zepnij taśmą dwa razy.  `);
+      //   }  
+      //   if (dlugosc === 4) {
+      //     agent.add(`${tonaz} tony ${dlugosc}  metry spiąć dwa razy, pakuj po 5 sztuk i wiązkę zepnij taśmą dwa razy.  `);
+      //   }
+      //   if (dlugosc >  4) {
+      //     agent.add(` ${tonaz} tony ${dlugosc} metra   spiąć dwa razy pakować osobno.`);
+      //   }
     } // 4 tony
 
     if (tonaz === 5) {
-        if (dlugosc < 3) {
-            agent.add(` ${tonaz} ton ${dlugosc} metr  Spiąć raz, wiązkę 5 sztuk zepnij dwa razy.`);
-          }
-          if (dlugosc >= 3) {
-            agent.add(` ${tonaz} ton ${dlugosc} metr  spiąć dwa razy, pakój osobno.`);
-          }
-      } // 5 ton
+      if (dlugosc < 3) {
+        agent.add(` ${tonaz} ton ${dlugosc} metr  Spiąć raz, wiązkę 5 sztuk zepnij dwa razy.`);
+      }
+      if (dlugosc >= 3) {
+        agent.add(` ${tonaz} ton ${dlugosc} metr  spiąć dwa razy, pakój osobno.`);
+      }
+    } // 5 ton
 
-      if (tonaz === 6) {
-        if (dlugosc < 2) {
-            agent.add(` ${tonaz} ton ${dlugosc} metr  spiąć raz, wiązkę pięć sztuk zepnij dwa razy.`);
-          }
-          if (dlugosc >= 2) {
-            agent.add(` ${tonaz} ton ${dlugosc} metr  spiąć dwa razy, pakój osobno.`);
-          }
-      } // 5 ton
+    if (tonaz === 6) {
+      if (dlugosc < 2) {
+        agent.add(` ${tonaz} ton ${dlugosc} metr  spiąć raz, wiązkę pięć sztuk zepnij dwa razy.`);
+      }
+      if (dlugosc >= 2) {
+        agent.add(` ${tonaz} ton ${dlugosc} metr  spiąć dwa razy, pakój osobno.`);
+      }
+    } // 5 ton
 
-      if (tonaz >= 8) {
-  
-            agent.add(` ${tonaz} ton ${dlugosc} metr  spiąć dwa razy, pakój osobno.`);
-          
-      } // 8 i wiecej ton
+    if (tonaz >= 8) {
+
+      agent.add(` ${tonaz} ton ${dlugosc} metr  spiąć dwa razy, pakój osobno.`);
+
+    } // 8 i wiecej ton
 
   }
-  
-    function podajNowyFaktor(agent) {
-        const tonaz = agent.parameters.tonaz;
+
+  function podajNowyFaktor(agent) {
+    const tonaz = agent.parameters.tonaz;
     const dlugosc = agent.parameters.dlugosc;
     if (!tonaz) {
       agent.add(` Nie wiem jaki tonaż Nowy Faktor.`);
     }
     if (!dlugosc) {
       agent.add(` Nie wiem jaką długość  Nowy Faktor.`);
-    } 
-    switch (tonaz) {
-      case 1: 
-        agent.add(`${tonaz} tona ${dlugosc} metr. Jedna szpula nici 66, licznik ustaw na ${parseFloat(dlugosc * 20).toFixed(2)} . Jedna sztuka waży ${parseFloat(dlugosc * 0.159).toFixed(2)} kilograma.`); 
-        break;
-        case 2:
-          agent.add(`${tonaz} tony ${dlugosc} metr. Dwie szpule nici 66, licznik ustaw na ${parseFloat(dlugosc * 20).toFixed(2)} . Jedna sztuka waży ${parseFloat(dlugosc * 0.319).toFixed(2)} kilograma.`); 
-      break;
-                case 3:
-          agent.add(`${tonaz} tony ${dlugosc} metry. Trzy szpule nici 66, licznik ustaw na ${parseFloat(dlugosc * 20).toFixed(2)} . Jedna sztuka waży ${parseFloat(dlugosc * 0.478).toFixed(2)} kilograma.`); 
-      break;
-      
-      case 4:  
-        agent.add(`${tonaz} tony ${dlugosc} metry, nowy faktor ziom! Potrzebujeszz 4 cieńkie szpule 66, licznik ustaw na parseFloat(${parseFloat(dlugosc * 20).toFixed(2)} . Jedna sztuka waży ${parseFloat(dlugosc * 0.638).toFixed(2)} kilograma.`); 
-        break;
-        
-         case 5:  
-        agent.add(`${tonaz} ton ${dlugosc} metry, nowy faktor ziom! Potrzebujeszz dwie szpule grubych nici 132, licznik ustaw na ${parseFloat(dlugosc * 26).toFixed(2)} . Jedna sztuka waży ${parseFloat(dlugosc * 0.804).toFixed(2)} kilograma.`); 
-        break;
-          case 6:  
-        agent.add(`${tonaz} ton ${dlugosc} metry, nowy faktor ziom! Potrzebujeszz trzy szpule grubych nici 132, licznik ustaw na ${parseFloat(dlugosc * 22).toFixed(2)} . Jedna sztuka waży ${parseFloat(dlugosc * 1.04).toFixed(2)} kilograma.`); 
-        break;
-        
-             case 8:  
-        agent.add(`${tonaz} ton ${dlugosc} metry, nowy faktor! Potrzebujeszz trzy szpule grubych nici 132, licznik ustaw na ${parseFloat(dlugosc * 30).toFixed(2)} . Jedna sztuka waży ${parseFloat(dlugosc * 1.372).toFixed(2)} kilograma.`); 
-        break;
-        
-           case 10:  
-        agent.add(`${tonaz} ton ${dlugosc} metry, nowy faktor ziom! Potrzebujeszz cztery szpule grubych nici 132, licznik ustaw na ${parseFloat(dlugosc * 30).toFixed(2)}. Jedna sztuka waży ${parseFloat(dlugosc * 1.83).toFixed(2)} kilograma.`); 
-        break;
-      
-      default:
-        return agent.add(` Potrzebujesz lepiej mnie zaprogramować. Nowy Faktor test.`);
     }
-    
+    if (tonaz && dlugosc) {
+      switch (tonaz) {
+        case 1:
+          agent.add(`${tonaz} tona ${dlugosc} metr. Jedna szpula nici 66, licznik ustaw na ${parseFloat(dlugosc * 20).toFixed(2)} . Jedna sztuka waży ${parseFloat(dlugosc * 0.159).toFixed(2)} kilograma.`);
+          break;
+        case 2:
+          agent.add(`${tonaz} tony ${dlugosc} metr. Dwie szpule nici 66, licznik ustaw na ${parseFloat(dlugosc * 20).toFixed(2)} . Jedna sztuka waży ${parseFloat(dlugosc * 0.319).toFixed(2)} kilograma.`);
+          break;
+        case 3:
+          agent.add(`${tonaz} tony ${dlugosc} metry. Trzy szpule nici 66, licznik ustaw na ${parseFloat(dlugosc * 20).toFixed(2)} . Jedna sztuka waży ${parseFloat(dlugosc * 0.478).toFixed(2)} kilograma.`);
+          break;
+
+        case 4:
+          agent.add(`${tonaz} tony ${dlugosc} metry, nowy faktor ziom! Potrzebujeszz 4 cieńkie szpule 66, licznik ustaw na parseFloat(${parseFloat(dlugosc * 20).toFixed(2)} . Jedna sztuka waży ${parseFloat(dlugosc * 0.638).toFixed(2)} kilograma.`);
+          break;
+
+        case 5:
+          agent.add(`${tonaz} ton ${dlugosc} metry, nowy faktor ziom! Potrzebujeszz dwie szpule grubych nici 132, licznik ustaw na ${parseFloat(dlugosc * 26).toFixed(2)} . Jedna sztuka waży ${parseFloat(dlugosc * 0.804).toFixed(2)} kilograma.`);
+          break;
+        case 6:
+          agent.add(`${tonaz} ton ${dlugosc} metry, nowy faktor ziom! Potrzebujeszz trzy szpule grubych nici 132, licznik ustaw na ${parseFloat(dlugosc * 22).toFixed(2)} . Jedna sztuka waży ${parseFloat(dlugosc * 1.04).toFixed(2)} kilograma.`);
+          break;
+
+        case 8:
+          agent.add(`${tonaz} ton ${dlugosc} metry, nowy faktor! Potrzebujeszz trzy szpule grubych nici 132, licznik ustaw na ${parseFloat(dlugosc * 30).toFixed(2)} . Jedna sztuka waży ${parseFloat(dlugosc * 1.372).toFixed(2)} kilograma.`);
+          break;
+
+        case 10:
+          agent.add(`${tonaz} ton ${dlugosc} metry, nowy faktor ziom! Potrzebujeszz cztery szpule grubych nici 132, licznik ustaw na ${parseFloat(dlugosc * 30).toFixed(2)}. Jedna sztuka waży ${parseFloat(dlugosc * 1.83).toFixed(2)} kilograma.`);
+          break;
+
+        default:
+          return agent.add(` Potrzebujesz lepiej mnie zaprogramować. Nowy Faktor test.`);
+      }
+    }
+
   }
 
   const intentMap = new Map();
@@ -678,7 +680,7 @@ jak np. czarny nadruk określający limit nośności prostej oraz czarne treski 
   intentMap.set('dlugoscZakladki', dlugoscZakladki);
   intentMap.set('ileSzpul', ileSzpul);
   intentMap.set('ustawLicznik', ustawLicznik);
-    intentMap.set('podajNowyFaktor', podajNowyFaktor);
+  intentMap.set('podajNowyFaktor', podajNowyFaktor);
   intentMap.set('nara', nara);
   intentMap.set('handler', googleAssistantHandler);
   intentMap.set('function handler', yourFunctionHandler);
