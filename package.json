@@ -23,6 +23,7 @@
     "@angular/material": "^9.1.0",
     "@angular/platform-browser": "~9.0.4",
     "@angular/platform-browser-dynamic": "~9.0.4",
+       "@angular/pwa": "^0.900.4",
     "@angular/router": "~9.0.4",
     "@angular/service-worker": "~9.0.4",
     "angular-calendar": "^0.28.2",
