@@ -13,7 +13,7 @@ import { NrArtkComponent } from './nr-artk/nr-artk.component';
 import { CzasComponent } from './czas/czas.component';
 import { NaddatkiComponent } from './naddatki/naddatki.component';
 import { UploadComponent } from './upload/upload.component';
-import { CalendarMonthComponent } from './calendar/calendar-month/calendar-month.component';
+import { CalendarMonthComponent } from './calendar/calendar-month/calendar-month.component'; 
 
 const routes: Routes = [
   { path: '', component: WagiComponent },
@@ -29,7 +29,8 @@ const routes: Routes = [
   { path: 'czas', component: CzasComponent },
   { path: 'naddatki', component: NaddatkiComponent },
   { path: 'wgraj', component: UploadComponent },
-  { path: 'calendar-m', component: CalendarMonthComponent }
+  { path: 'calendar-m', component: CalendarMonthComponent }, 
+  { path: 'obrazy', loadChildren: () => import('./obrazy/obrazy.module').then(m => m.ObrazyModule) }
 ];
 
 @NgModule({

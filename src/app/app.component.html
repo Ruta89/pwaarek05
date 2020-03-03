@@ -1,1 +1,8 @@
-<app-nav></app-nav>
+<div class="full" *ngIf="show">
+  <video autoplay loop muted playsinline>
+    <source src="/assets/a/2.webm" type="video/webm" />
+  </video>
+</div>
+<div *ngIf="!show">
+  <app-nav></app-nav>
+</div>

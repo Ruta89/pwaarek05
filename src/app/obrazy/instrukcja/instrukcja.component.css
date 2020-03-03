@@ -1,0 +1,11 @@
+img {
+    min-width: 200px;
+    width: 100%;
+    min-height: 400px;
+    transition: opacity 1s;
+    opacity: 0;
+  }
+  img.ng-lazyloaded {
+    opacity: 1;
+  }
+  

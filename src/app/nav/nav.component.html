@@ -11,6 +11,10 @@
     <mat-nav-list>
       <a mat-list-item [routerLink]="'/wagi'"> Wagi </a>
       <a mat-list-item [routerLink]="'/nr-artk'">Nr. artk</a>
+      <a mat-list-item [routerLink]="'/obrazy/katalog/'">katalog</a>
+      <a mat-list-item [routerLink]="'/obrazy'">obrazy</a>
+      <a mat-list-item [routerLink]="'/obrazy/zdjecia'">zdjecia</a>
+      <a mat-list-item [routerLink]="'/obrazy/instrukcja'">Instrukcja</a>
       <a mat-list-item [routerLink]="'/czas'">Czas</a>
       <a mat-list-item [routerLink]="'/naddatki'">Naddatki</a>
       <a mat-list-item [routerLink]="'/wgraj'">Wgraj</a>
@@ -33,9 +37,10 @@
       >
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>pwaarek10</span>
+      <span>pwaarek20</span>
     </mat-toolbar>
     <!-- Add Content Here -->
-    <router-outlet></router-outlet>
+
+    <router-outlet> </router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

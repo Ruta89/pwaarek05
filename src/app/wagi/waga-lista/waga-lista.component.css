@@ -7,7 +7,7 @@ container2 {
   flex-direction: column;
 }
 
-.container2>* {
+.container2 > * {
   width: 100%;
 }
 
@@ -15,5 +15,16 @@ container2 {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+.full {
+  display: flex;
   
+  min-width: 100%;
+  min-height:100%;
+}
+source {
+  min-width: 100%;
+  min-height:100%;
+  flex-direction: column;
+  justify-content: center;
 }

@@ -1,0 +1,63 @@
+<div>
+ <!-- <img
+    [defaultImage]="'/assets/ikonyZawiesi.jpg'"
+    [lazyLoad]="'/assets/katalog/44 (2).jpg'"
+  />
+  <img
+    [defaultImage]="'/assets/ikonyZawiesi.jpg'"
+    [lazyLoad]="'/assets/katalog/56 (2).jpg'"
+  />
+  <img
+    [defaultImage]="'/assets/ikonyZawiesi.jpg'"
+    [lazyLoad]="'/assets/katalog/57 (2).jpg'"
+  />
+  <img
+    [defaultImage]="'/assets/ikonyZawiesi.jpg'"
+    [lazyLoad]="'/assets/katalog/58 (2).jpg'"
+  />
+  <img
+    [defaultImage]="'/assets/ikonyZawiesi.jpg'"
+    [lazyLoad]="'/assets/katalog/59 (2).jpg'"
+  />
+  <img
+    [defaultImage]="'/assets/ikonyZawiesi.jpg'"
+    [lazyLoad]="'/assets/katalog/60 (2).jpg'"
+  />
+  <img
+    [defaultImage]="'/assets/ikonyZawiesi.jpg'"
+    [lazyLoad]="'/assets/katalog/61 (2).jpg'"
+  /> 
+   <p>c</p> -->
+
+  <img *ngFor="let image of images" [defaultImage]="defaultImage" [errorImage]="errorImage" [lazyLoad]="image" /> 
+  <!-- <img [lazyLoad]="images | async" />  -->
+
+  <!-- <img
+[customObservable]="scroll$"
+[defaultImage]="defaultImage"
+[lazyLoad]="images"
+/> -->
+  <!-- 
+<img [defaultImage]="defaultImage" [lazyLoad]="images" /><img [defaultImage]="defaultImage" [lazyLoad]="obrazy" />
+<div [defaultImage]="defaultImage" [lazyLoad]="image"></div>
+
+ <img [lazyLoad]="image$ | async" /> 
+<img
+  [customObservable]="scroll$"
+  [defaultImage]="defaultImage"
+  [lazyLoad]="image"
+/>
+<img
+  [defaultImage]="'https://www.placecage.com/1000/1000'"
+  [lazyLoad]="'https://hd.unsplash.com/photo-1431400445088-1750c997c6b5'"
+/>-->
+  <!-- <img
+  [defaultImage]="'/assets/katalog/73 (2).jpg'"
+  [lazyLoad]="'/assets/katalog/73 (2).jpg'"
+/><img
+[defaultImage]="'/assets/katalog/62 (2).jpg'"
+[lazyLoad]="'/assets/katalog/62 (2).jpg'"
+/> 
+
+  -->
+</div>

@@ -8,8 +8,9 @@ import { SwUpdate } from '@angular/service-worker';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'pwaarek10';
-  constructor(private swUpdate: SwUpdate) {}
+  show = true;
+  title = 'pwaarek20';
+  constructor(private swUpdate: SwUpdate) { }
   ngOnInit() {
     if (this.swUpdate.isEnabled) {
       this.swUpdate.available.subscribe(() => {
@@ -18,5 +19,8 @@ export class AppComponent implements OnInit {
         }
       });
     }
+    setTimeout(() => {
+      this.show = false;
+    }, 2500);
   }
 }

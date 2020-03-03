@@ -56,7 +56,7 @@ import { UploadComponent } from './upload/upload.component';
 import { WagaDetailComponent } from './wagi/waga-detail/waga-detail.component';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
-import { CalendarMonthComponent } from './calendar/calendar-month/calendar-month.component';
+import { CalendarMonthComponent } from './calendar/calendar-month/calendar-month.component'; 
 
 @NgModule({
   declarations: [
@@ -75,7 +75,7 @@ import { CalendarMonthComponent } from './calendar/calendar-month/calendar-month
     NaddatkiComponent,
     UploadComponent,
     WagaDetailComponent,
-    CalendarMonthComponent
+    CalendarMonthComponent,
   ],
   imports: [
     BrowserModule,

@@ -58,6 +58,7 @@ export class WagaListaComponent implements OnInit {
   math: Math;
   selectedItem: Item;
   partieAr = [];
+  // show = true;
   constructor(
     private afs: AngularFirestore,
     private firestoreService: FirestoreService,
@@ -84,6 +85,9 @@ export class WagaListaComponent implements OnInit {
 
     this.razemSuma();
     this.razemSumaWagi();
+    // setTimeout(() => {
+    //   this.show = false;
+    // }, 15000);
   }
   getPartie() {
     this.czasService.snackBar('ostatnie partie:  ' + this.partieAr.toString(), 'X');

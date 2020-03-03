@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./wagi.component.css']
 })
 export class WagiComponent implements OnInit {
+  show = true;
 
   constructor() { }
 
   ngOnInit() {
+    setTimeout(() => {
+      this.show = false;
+    }, 3500);
   }
 
 }

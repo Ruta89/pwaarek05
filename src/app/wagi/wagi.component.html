@@ -1,3 +1,17 @@
-<app-waga></app-waga>
+ 
 
-<app-waga-lista></app-waga-lista>
+
+  <div class="full" *ngIf="show">
+    <video autoplay loop muted playsinline>
+      <source src="/assets/a/1.webm" type="video/webm" />
+    </video> 
+  </div>
+  <div class="full" *ngIf="!show">
+    <app-waga></app-waga>
+  
+    <app-waga-lista>
+      <video autoplay loop muted playsinline>
+        <source src="/assets/a/1.webm" type="video/webm" /></video
+    ></app-waga-lista>
+  </div>
+  

@@ -838,6 +838,121 @@ jak np. czarny nadruk określający limit nośności prostej oraz czarne treski 
       }
     }
 
+    function gurt(agent) {
+      const tonaz = agent.parameters.tonaz;
+      switch (tonaz) {
+        case 10:
+          agent.add(
+            `Na ${tonaz} ton potrzebujesz: 1 raz 250 mm gurt, długość zakładki 1 metr.`
+          );
+          break;
+        case 12:
+          agent.add(
+            `Na ${tonaz} ton potrzebujesz: 1 raz 250 mm gurt, długość zakładki 1 metr.`
+          );
+          break;
+        case 15:
+          agent.add(
+            ` Na ${tonaz} ton potrzebujesz: 1 raz 250 mm gurt, długość zakładki 1 metr.`
+          );
+          break;
+        case 20:
+          agent.add(
+            `Na ${tonaz} ton potrzebujesz: 1 raz 400 mm gurt, długość zakładki 1 metr.`
+          );
+          break;
+        case 25:
+          agent.add(
+            `Na ${tonaz} ton potrzebujesz: 1 raz 400 mm gurt, długość zakładki 1 metr.`
+          );
+          break;
+        case 30:
+          agent.add(
+            `Na ${tonaz} ton potrzebujesz: 1 raz 400 mm gurt, długość zakładki 1 metr.`
+          );
+          break;
+        case 35:
+          agent.add(
+            `Na ${tonaz} ton potrzebujesz: 1 raz 500 mm gurt, długość zakładki 1 metr.`
+          );
+          break;
+        case 40:
+          agent.add(
+            `Na ${tonaz} ton potrzebujesz: 1 raz 500 mm gurt, długość zakładki 1 metr..`
+          );
+          break;
+        case 45:
+          agent.add(
+            `NNa ${tonaz} ton potrzebujesz: 1 raz 500 mm gurt, długość zakładki 1 metr.`
+          );
+          break;
+        case 50:
+          agent.add(
+            `NNa ${tonaz} ton potrzebujesz: 1 raz 500 mm gurt, długość zakładki 1 metr.`
+          );
+          break;
+        case 60:
+          agent.add(
+            `Na ${tonaz} ton potrzebujesz: 600  gurt, długość zakładki 1 metr.`
+          );
+          break;
+        case 70:
+          agent.add(
+            `Na ${tonaz} ton potrzebujesz: 600  mm gurt, długość zakładki 1 metr.`
+          );
+          break;
+        case 80:
+          agent.add(
+            `Na ${tonaz} ton potrzebujesz: 600  mm gurt, długość zakładki 1 metr.`
+          );
+          break;
+        case 90:
+          agent.add(
+            `Na ${tonaz} ton potrzebujesz: 500 mm + 250 mm lub dwa razy 400 mm  gurtu, długość zakładki 1 metr.`
+          );
+          break;
+        case 100:
+          agent.add(
+            `Na ${tonaz} ton potrzebujesz: 600 mm + 300 mm lub 500 mm plus   400 mm  gurtu, długość zakładki 1 metr.`
+          );
+          break;
+        case 110:
+          agent.add(
+            `Na ${tonaz} ton potrzebujesz: 600 mm + 300 mm lub 500 mm plus   400 mm  gurtu, długość zakładki 1 metr.`
+          );
+          break;
+        case 120:
+          agent.add(
+            `Na ${tonaz} ton potrzebujesz: 600 mm + 300 mm lub 500 mm plus   400  gurtu, długość zakładki 1 metr.`
+          );
+          break;
+        case 150:
+          agent.add(
+            `Na ${tonaz} ton potrzebujesz: 600 mm + 300 mm lub 500 mm plus   400  gurtu, długość zakładki 1 metr.`
+          );
+          break;
+        case 180:
+          agent.add(`Na ${tonaz} ton potrzebujesz: 600 mm + 500 mm gurtu .`);
+          break;
+        case 200:
+          agent.add(`Na ${tonaz} ton potrzebujesz: dwa razy 600 mm  gurtu .`);
+          break;
+        case 250:
+          agent.add(
+            `Na ${tonaz} ton potrzebujesz: 500 mm plus dwa razy 400 mm gurtu .`
+          );
+          break;
+        case 300:
+          agent.add(
+            `Na ${tonaz} ton potrzebujesz: dwa razy 500 mm + 400 mm gurtu .`
+          );
+          break;
+
+        default:
+          return agent.add(` Potrzebujesz napewno jakies szpule.`);
+      }
+    }
+
     const intentMap = new Map();
     intentMap.set('Default Welcome Intent', welcome);
     intentMap.set('Default Fallback Intent', fallback);
@@ -857,6 +972,7 @@ jak np. czarny nadruk określający limit nośności prostej oraz czarne treski 
     intentMap.set('pakowanie', pakowanie);
     intentMap.set('odporne', odporne);
     intentMap.set('zawiesia wezowe', zw);
+    intentMap.set('gurt', gurt);
     agent.handleRequest(intentMap);
   }
 );
